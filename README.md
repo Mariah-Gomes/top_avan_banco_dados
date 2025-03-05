@@ -6,7 +6,7 @@
 > Realizamos esse projeto juntos durante as aulas
 
 ### Tópicos
-🔹[Explicação do tema escolhido](#straight_ruler-diagrama-relacional)
+🔹[Explicação do tema escolhido](#pushpin-explicação-do-tema-escolhido)
 
 🔹[Justificativa para cada banco usado no projeto e como S2 será implementado](#straight_ruler-diagrama-relacional)
 
@@ -14,7 +14,7 @@
 
 🔹[Desenvolvedores](#busts_in_silhouette-desenvolvedores)
 
-## Explicação do tema escolhido
+## :pushpin: Explicação do tema escolhido
 Escolhemos como tema o desenvolvimento de um Sistema de Gerenciamento de Consultas Médicas, destinado a clínicas médicas para gerenciar de forma eficiente agendamentos de pacientes, histórico de atendimentos, disponibilidade de médicos, dados de pacientes e médicos, entre outras funcionalidades essenciais para o funcionamento de uma clínica.
 
 Após uma análise cuidadosa e várias discussões em grupo, decidimos seguir com essa ideia, pois ela nos permitiu explorar algo novo e inovador fora do contexto financeiro, que é uma área mais comum. O sistema de agendamento de consultas nos chamou a atenção pela complexidade e pela riqueza dos dados que iríamos manipular, além dos desafios interessantes envolvidos no processo de criação.
