@@ -8,7 +8,7 @@
 ### Tópicos
 🔹[Explicação do tema escolhido](#pushpin-explicação-do-tema-escolhido)
 
-🔹[Justificativa para cada banco usado no projeto e como S2 será implementado](#straight_ruler-diagrama-relacional)
+🔹[Justificativa para cada banco usado no projeto e como S2 será implementado](#pencil2-justificativa-para-cada-banco-usado-no-projeto-e-como-S2-será-implementado)
 
 🔹[Como executar o código](#space_invader-como-executar-o-código)
 
@@ -21,7 +21,7 @@ Após uma análise cuidadosa e várias discussões em grupo, decidimos seguir co
 
 Um dos aspectos mais atrativos do projeto é a gestão de disponibilidade de médicos, que varia de acordo com cada paciente, além do controle de histórico de consultas, permitindo o acompanhamento da evolução de cada paciente ao longo do tempo. Isso inclui a verificação de situações específicas, como consultas passadas, agendamentos futuros, exames realizados e o gerenciamento completo das informações relacionadas a cada atendimento médico. A maneira como lidaremos com esses dados, de forma segura e eficiente, é um dos principais desafios e motivadores do projeto.
 
-## Justificativa para cada banco usado no projeto e como S2 será implementado
+## :pencil2: Justificativa para cada banco usado no projeto e como S2 será implementado
 
 ### Justificativa para cada banco
 
