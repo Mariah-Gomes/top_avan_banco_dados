@@ -1,4 +1,4 @@
-# top_avan_banco_dados
+# AgendaMed
 > Status do projeto: Em andamento
 
 > Esse projeto nos foi proposto no 6º Semestre na disciplina de Tópicos Avançados de Banco de Dados
