@@ -28,7 +28,7 @@ def menu_quem(quem):
     print("---------------")
     opcao = int(input("Digite uma opção -> "))
     if opcao == 1:
-        print(f'Cadastrar {quem}')
+        cadastrar(quem)
     elif opcao == 2:
         print(f'Remover {quem}')
     elif opcao == 3:
@@ -41,4 +41,9 @@ def menu_quem(quem):
         print("Tchau!")
     else:
         print("Opção inválida!")
-    print()
+
+def cadastrar(quem):
+    if quem == "Médico":
+        print(f'Cadastrar {quem}')
+    elif quem == "Paciente":
+        print(f'Cadastrar {quem}')
