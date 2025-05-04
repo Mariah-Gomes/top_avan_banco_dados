@@ -1,8 +1,11 @@
+from dados import menu_dados
+from consulta import menu_consulta
+from documentacao import menu_documentacao
+from acompanhamento import acompanhamento
+
 # Loop principal:
-print()
 print("Bem-vindo(a) ao Sistema AgendaMed!!!")
 while(True):
-    print()
     print("Menu de Acesso: ")
     print("---------------")
     print("1. Dados")
@@ -11,15 +14,19 @@ while(True):
     print("4. Acompanhamento")
     print("5. Sair")
     print("---------------")
-    opcao = int(input("Digite uma opção: "))
+    opcao = int(input("Digite uma opção -> "))
     if opcao == 1:
-        print("Dados")
+        print()
+        menu_dados()
     elif opcao == 2:
-        print("Consulta")
+        print()
+        menu_consulta()
     elif opcao == 3:
-        print("Documentação")
+        print()
+        menu_documentacao()
     elif opcao == 4:
-        print("Acompanhamento")
+        print()
+        acompanhamento()
     elif opcao == 5:
         print("Tchau!")
         break
