@@ -1,3 +1,6 @@
+from src.s2.connection import supabase
+from src.s2.rdb import inserir_dado_medico
+
 def adicionar_medico():
     nome_medico = input("Digite o nome do médico: ")
     crm = input("Digite o CRM do médico: ")
@@ -5,16 +8,16 @@ def adicionar_medico():
     dados = {
         'nome': nome_medico,
         'crm': crm,
-        'especialidade': especializacao
+        'especializacao': especializacao
     }
-    # CHAMA A FUNÇÃO PARA INSERIR NO BANCO DE DADOS
-    #inserir_dado('medico', dados)
-    #sucesso = rdb.inserir_medico(dados)
-
-    #if sucesso:
-    #    print("Médico cadastrado com sucesso!")
-    #else:
-    #    print("Ocorreu um erro ao cadastrar o médico. Tente novamente!")
+    
+    resultado = inserir_dado_medico(dados)
+    
+    # CHECA SE DEU CERTO
+    if resultado.data:
+        print("Médico cadastrado com sucesso!")
+    else:
+        print("Ocorreu um erro ao cadastrar o médico. Tente novamente!")
 
 def remover_medico():
     crm = input("Digite o CRM do médico: ")
