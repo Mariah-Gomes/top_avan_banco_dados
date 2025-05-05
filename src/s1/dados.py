@@ -32,13 +32,13 @@ def menu_quem(quem):
     if opcao == 1:
         cadastrar(quem)
     elif opcao == 2:
-        print(f'Remover {quem}')
+        remover(quem)
     elif opcao == 3:
-        print(f'Editar {quem}')
+        editar(quem)
     elif opcao == 4:
-        print(f'Consultar {quem}')
+        consultar()
     elif opcao == 5:
-        print(f'Listar {quem}')
+        listar()
     elif opcao == 6:
         print("Tchau!")
     else:
@@ -49,3 +49,27 @@ def cadastrar(quem):
         adicionar_medico()
     elif quem == "Paciente":
         print(f'Cadastrar {quem}')
+        
+def remover(quem):
+    if quem == "Médico":
+        print(f'Remover {quem}')
+    elif quem == "Paciente":
+        print(f'Remover {quem}')
+        
+def editar(quem):
+    if quem == "Médico":
+        print(f'Editar {quem}')
+    elif quem == "Paciente":
+        print(f'Editar {quem}')
+        
+def consultar(quem):
+    if quem == "Médico":
+        print(f'Consultar {quem}')
+    elif quem == "Paciente":
+        print(f'Consultar {quem}')
+        
+def listar(quem):
+    if quem == "Médico":
+        print(f'Listar {quem}')
+    elif quem == "Paciente":
+        print(f'Listar {quem}')
