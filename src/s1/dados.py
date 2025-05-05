@@ -1,3 +1,5 @@
+from src.s1.medico import adicionar_medico
+
 def menu_dados():
     print("Menu Dados: ")
     print("---------------")
@@ -44,6 +46,6 @@ def menu_quem(quem):
 
 def cadastrar(quem):
     if quem == "Médico":
-        print(f'Cadastrar {quem}')
+        adicionar_medico()
     elif quem == "Paciente":
         print(f'Cadastrar {quem}')

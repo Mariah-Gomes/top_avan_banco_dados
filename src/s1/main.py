@@ -1,7 +1,7 @@
-from dados import menu_dados
-from consulta import menu_consulta
-from documentacao import menu_documentacao
-from acompanhamento import acompanhamento
+from src.s1.dados import menu_dados
+from src.s1.consulta import menu_consulta
+from src.s1.documentacao import menu_documentacao
+from src.s1.acompanhamento import acompanhamento
 
 # Loop principal:
 print("Bem-vindo(a) ao Sistema AgendaMed!!!")
