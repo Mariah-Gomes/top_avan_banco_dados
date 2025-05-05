@@ -1,0 +1,31 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "https://caaonybbffetkayrkiww.supabase.co",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "Supabase Project Facul",
+            "username": "Mariah-Gomes",
+            "database": "Mariah-Gomes's Project"
+        },
+        {
+            "previewLimit": 50,
+            "server": "caaonybbffetkayrkiww.supabase.co",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "Project Facul",
+            "database": "Mariah-Gomes's Project",
+            "username": "Mariah-Gomes"
+        },
+        {
+            "previewLimit": 50,
+            "server": "caaonybbffetkayrkiww.supabase.co",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "database": "postgres",
+            "username": "Mariah-Gomes",
+            "name": "Project Facul"
+        }
+    ]
+}
