@@ -1,15 +1,23 @@
-# s1.py
 import pika
+import json
 
-connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
-channel = connection.channel()
+# Função para enviar a mensagem para o RabbitMQ
+def enviar_mensagem(dados_medico):
+    # Estabelece a conexão com o RabbitMQ
+    connection = pika.BlockingConnection(pika.ConnectionParameters(
+    host='rabbitmq',
+    credentials=pika.PlainCredentials('guest', 'guest')
+))
+    channel = connection.channel()
 
-channel.queue_declare(queue='hello')
+    # Declara a fila
+    channel.queue_declare(queue='medico')
 
-channel.basic_publish(exchange='',
-                      routing_key='hello',
-                      body='Mensagem do s1 para o s2')
+    # Envia a mensagem (dados do médico) como JSON
+    channel.basic_publish(exchange='',
+                          routing_key='medico',
+                          body=json.dumps(dados_medico))
 
-print(" [x] Mensagem enviada!")
+    print(" [x] Mensagem enviada para a fila!")
 
-connection.close()
+    connection.close()
