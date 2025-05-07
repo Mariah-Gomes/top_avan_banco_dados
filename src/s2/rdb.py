@@ -17,11 +17,14 @@ def inserir_dado_medico(dados):
     try:
         response = supabase.table("medico").insert(dados).execute()
         if response.data:
-            print("Inserção realizada com sucesso")
-            return True
+            mensagem = "Inserção realizada com sucesso"
+            print(mensagem)
+            return True, mensagem
         else:
-            print("Erro ao inserir:", response.error)
-            return False
+            mensagem = f"Erro ao inserir: {response.error}"
+            print(mensagem)
+            return False, mensagem
     except Exception as e:
-        print(f"Erro ao inserir dado no banco de dados: {str(e)}")
-        return False
+        mensagem = f"Erro ao inserir dado no banco de dados: {str(e)}"
+        print(mensagem)
+        return False, mensagem
