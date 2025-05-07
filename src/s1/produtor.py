@@ -1,23 +1,36 @@
 import pika
 import json
 
-# Função para enviar a mensagem para o RabbitMQ
-def enviar_mensagem(dados_medico):
-    # Estabelece a conexão com o RabbitMQ
-    connection = pika.BlockingConnection(pika.ConnectionParameters(
-    host='rabbitmq',
-    credentials=pika.PlainCredentials('guest', 'guest')
-))
-    channel = connection.channel()
+def enviar_mensagem(nome_funcao, dados):
+    rabbitmq_host = "localhost"
+    credentials = pika.PlainCredentials('guest', 'guest')
+    parameters = pika.ConnectionParameters(rabbitmq_host, 5672, '/', credentials)
+    connection = None
 
-    # Declara a fila
-    channel.queue_declare(queue='medico')
+    try:
+        connection = pika.BlockingConnection(parameters)
+        channel = connection.channel()
 
-    # Envia a mensagem (dados do médico) como JSON
-    channel.basic_publish(exchange='',
-                          routing_key='medico',
-                          body=json.dumps(dados_medico))
+        # Declara a fila única
+        channel.queue_declare(queue='medico', durable=True)
 
-    print(" [x] Mensagem enviada para a fila!")
+        # Monta o payload com função + dados
+        mensagem = {
+            'funcao': nome_funcao,
+            'dados': dados
+        }
 
-    connection.close()
+        # Envia mensagem para a fila 'medico'
+        channel.basic_publish(
+            exchange='',
+            routing_key='medico',
+            body=json.dumps(mensagem),
+            properties=pika.BasicProperties(delivery_mode=2)
+        )
+
+        print(f" [x] Mensagem enviada para a fila! ({nome_funcao})")
+    except Exception as e:
+        print(f"Erro ao enviar mensagem: {e}")
+    finally:
+        if connection and connection.is_open:
+            connection.close()
