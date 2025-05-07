@@ -1,7 +1,7 @@
 # Importação de bibliotecas necessárias
 import pika  # Para comunicação com o RabbitMQ
 import json  # Para converter dados em formato JSON
-from src.s2.rdb import inserir_dado_medico, verificar_dado_medico  # Funções para manipulação do banco de dados
+from src.s2.rdb import inserir_dado_medico, verificar_dado_medico, remover_dado_medico  # Funções para manipulação do banco de dados
 
 # Função de callback que será chamada toda vez que uma mensagem for recebida na fila
 def callback(ch, method, properties, body):
@@ -14,7 +14,8 @@ def callback(ch, method, properties, body):
         dados = mensagem.get('dados')  # A chave 'dados' contém os dados a serem processados
 
         # Imprime o que foi recebido
-        print(f" [x] Recebido: função={funcao}, dados={dados}")
+        print(f" [x] Recebido")
+        #print(f" [x] Recebido: função={funcao}, dados={dados}")
 
         # Variável para armazenar o resultado da operação
         resultado = None
@@ -24,6 +25,12 @@ def callback(ch, method, properties, body):
             # Chama a função para inserir os dados do médico no banco de dados
             sucesso, mensagem_resultado = inserir_dado_medico(dados)
             resultado = {'resultado': sucesso, 'mensagem': mensagem_resultado}
+            
+        elif funcao == 'remover_medico':
+            # Chama a função para inserir os dados do médico no banco de dados
+            sucesso, mensagem_resultado = remover_dado_medico(dados)
+            resultado = {'resultado': sucesso, 'mensagem': mensagem_resultado}
+        
         elif funcao == 'verificar_medico':
             # Chama a função para verificar se o médico já existe no banco de dados
             existe = verificar_dado_medico(dados)

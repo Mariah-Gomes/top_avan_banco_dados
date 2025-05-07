@@ -1,4 +1,4 @@
-from src.s1.medico import adicionar_medico
+from src.s1.medico import adicionar_medico, remover_medico
 
 def menu_dados():
     print("Menu Dados: ")
@@ -52,7 +52,7 @@ def cadastrar(quem):
         
 def remover(quem):
     if quem == "Médico":
-        print(f'Remover {quem}')
+        remover_medico()
     elif quem == "Paciente":
         print(f'Remover {quem}')
         
