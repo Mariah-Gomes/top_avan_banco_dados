@@ -45,10 +45,10 @@ def enviar_mensagem_aguardando(nome_funcao, dados):
 def verificacao_medico(crm):
     resultado = enviar_mensagem_aguardando('verificar_medico', crm)  # Envia o CRM para verificar no backend
     if resultado and resultado['resultado']:
-        print("Atenção: CRM já cadastrado!")  # Exibe aviso se já existir
+        #print("Atenção: CRM já cadastrado!")  # Exibe aviso se já existir
         return True  # Indica que está cadastrado
     else:
-        print("CRM disponível para cadastro.")  # Exibe confirmação se não existir
+        #print("CRM disponível para cadastro.")  # Exibe confirmação se não existir
         return False  # Indica que não está cadastrado
 
 # Função para adicionar um médico no sistema
@@ -71,4 +71,15 @@ def adicionar_medico():
     resultado = enviar_mensagem_aguardando('adicionar_medico', dados)  # Envia os dados para adicionar no backend
 
     # Exibe a mensagem de resposta recebida (ex.: sucesso ou erro)
+    print(resultado['mensagem'])
+
+def remover_medico():
+    crm = input("Digite o CRM do médico: ")
+    ja_cadastrado = verificacao_medico(crm)
+    if not ja_cadastrado:
+        print("Operação cancelada: não é possível remover um médico que não está no sistema.")
+        return  # Interrompe a função se já estiver cadastrado
+    
+    resultado = enviar_mensagem_aguardando('remover_medico', crm)  # Envia os dados para adicionar no backend
+    
     print(resultado['mensagem'])

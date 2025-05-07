@@ -47,7 +47,7 @@ def enviar_mensagem(nome_funcao, dados, reply_to=None, correlation_id=None):
         )
 
         # Exibe no terminal que a mensagem foi enviada com sucesso
-        print(f" [x] Mensagem enviada para a fila! ({nome_funcao})")
+        print("[x] Mensagem enviada para a fila!")
     
     except Exception as e:
         # Se ocorrer algum erro durante o envio, exibe a mensagem de erro
