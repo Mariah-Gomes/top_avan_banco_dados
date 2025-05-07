@@ -1,49 +1,47 @@
-# s2/consumidor.py 
 import pika
 import json
-from src.s2.rdb import inserir_dado_medico
-from src.s2.mongo import inserir_dado_mongo  # Caso tenha MongoDB
-from src.s2.cassandra import inserir_dado_cassandra  # Caso tenha Cassandra
+from src.s2.rdb import inserir_dado_medico  # 👉 importa seu arquivo rdb.py
 
+# Função para processar mensagens
 def callback(ch, method, properties, body):
-    # Converte a mensagem de volta para um dicionário
-    dados = json.loads(body.decode())
-    print(f" [x] Mensagem recebida: {dados}")
+    try:
+        mensagem = json.loads(body)
+        funcao = mensagem.get('funcao')
+        dados = mensagem.get('dados')
 
-    # Pega a routing_key da mensagem (nome da fila)
-    routing_key = method.routing_key
-    print(f" [x] Mensagem recebida na fila: {routing_key}")
+        print(f" [x] Recebido: função={funcao}, dados={dados}")
 
-    # Decide qual função chamar com base na routing_key
-    if routing_key == 'medico':
-        sucesso = inserir_dado_medico(dados)
-    elif routing_key == 'documento':
-        sucesso = inserir_dado_mongo(dados)
-    elif routing_key == 'disponibilidade':
-        sucesso = inserir_dado_cassandra(dados)
-    else:
-        sucesso = False
-        print("Erro: routing_key desconhecida.")
+        # Roteamento para funções no rdb.py
+        if funcao == 'adicionar_medico':
+            inserir_dado_medico(dados)
+        elif funcao == 'remover_medico':
+            print()
+        elif funcao == 'editar_medico':
+            print()
+        elif funcao == 'consultar_medico':
+            print()
+        else:
+            print(f" [!] Função desconhecida: {funcao}")
 
-    # Feedback de sucesso ou falha
-    if sucesso:
-        print("Operação realizada com sucesso no banco de dados.")
-    else:
-        print("Erro ao realizar a operação no banco de dados.")
+        # Confirma que a mensagem foi processada
+        ch.basic_ack(delivery_tag=method.delivery_tag)
+    except Exception as e:
+        print(f" [!] Erro ao processar mensagem: {e}")
+        ch.basic_nack(delivery_tag=method.delivery_tag, requeue=False)
 
-# Estabelece a conexão com o RabbitMQ
-connection = pika.BlockingConnection(pika.ConnectionParameters(
-    host='rabbitmq',  # Ou 'rabbitmq' se você estiver usando Docker Compose, conforme o nome do serviço
-    credentials=pika.PlainCredentials('guest', 'guest')  # Credenciais do RabbitMQ
-))
+# Configuração RabbitMQ
+rabbitmq_host = "localhost"
+credentials = pika.PlainCredentials('guest', 'guest')
+parameters = pika.ConnectionParameters(rabbitmq_host, 5672, '/', credentials)
+
+connection = pika.BlockingConnection(parameters)
 channel = connection.channel()
 
-# Declara as filas que quer escutar
-filas = ['medico', 'documento', 'disponibilidade']
+# Declara a fila
+channel.queue_declare(queue='medico', durable=True)
 
-for fila in filas:
-    channel.queue_declare(queue=fila)
-    channel.basic_consume(queue=fila, on_message_callback=callback, auto_ack=True)
+# Consome mensagens
+channel.basic_consume(queue='medico', on_message_callback=callback)
 
-print(' [*] Esperando mensagens. Pressione CTRL+C para sair.')
+print(' [*] Aguardando mensagens. Para sair pressione CTRL+C')
 channel.start_consuming()
