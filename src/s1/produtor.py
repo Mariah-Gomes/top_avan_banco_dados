@@ -1,7 +1,7 @@
 import pika
 import json
 
-def enviar_mensagem(nome_funcao, dados):
+def enviar_mensagem(nome_funcao, dados, reply_to=None, correlation_id=None):
     rabbitmq_host = "localhost"
     credentials = pika.PlainCredentials('guest', 'guest')
     parameters = pika.ConnectionParameters(rabbitmq_host, 5672, '/', credentials)
@@ -10,22 +10,24 @@ def enviar_mensagem(nome_funcao, dados):
     try:
         connection = pika.BlockingConnection(parameters)
         channel = connection.channel()
-
-        # Declara a fila única
         channel.queue_declare(queue='medico', durable=True)
 
-        # Monta o payload com função + dados
         mensagem = {
             'funcao': nome_funcao,
             'dados': dados
         }
 
-        # Envia mensagem para a fila 'medico'
+        props = pika.BasicProperties(
+            delivery_mode=2,
+            reply_to=reply_to,
+            correlation_id=correlation_id
+        )
+
         channel.basic_publish(
             exchange='',
             routing_key='medico',
             body=json.dumps(mensagem),
-            properties=pika.BasicProperties(delivery_mode=2)
+            properties=props
         )
 
         print(f" [x] Mensagem enviada para a fila! ({nome_funcao})")
