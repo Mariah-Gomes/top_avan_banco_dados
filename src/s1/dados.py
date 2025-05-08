@@ -1,4 +1,4 @@
-from src.s1.medico import adicionar_medico, remover_medico
+from src.s1.medico import adicionar_medico, remover_medico, consultar_medico
 
 def menu_dados():
     print("Menu Dados: ")
@@ -34,11 +34,12 @@ def menu_quem(quem):
     elif opcao == 2:
         remover(quem)
     elif opcao == 3:
-        editar(quem)
+        print('Editar')
+        #editar(quem)
     elif opcao == 4:
-        consultar()
+        consultar(quem)
     elif opcao == 5:
-        listar()
+        listar(quem)
     elif opcao == 6:
         print("Tchau!")
     else:
@@ -56,15 +57,15 @@ def remover(quem):
     elif quem == "Paciente":
         print(f'Remover {quem}')
         
-def editar(quem):
-    if quem == "Médico":
-        print(f'Editar {quem}')
-    elif quem == "Paciente":
-        print(f'Editar {quem}')
+#def editar(quem):
+#    if quem == "Médico":
+#        print(f'Editar {quem}')
+#    elif quem == "Paciente":
+#        print(f'Editar {quem}')
         
 def consultar(quem):
     if quem == "Médico":
-        print(f'Consultar {quem}')
+        consultar_medico()
     elif quem == "Paciente":
         print(f'Consultar {quem}')
         

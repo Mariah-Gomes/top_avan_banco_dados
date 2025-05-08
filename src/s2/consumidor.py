@@ -1,82 +1,69 @@
-# Importação de bibliotecas necessárias
-import pika  # Para comunicação com o RabbitMQ
-import json  # Para converter dados em formato JSON
-from src.s2.rdb import inserir_dado_medico, verificar_dado_medico, remover_dado_medico  # Funções para manipulação do banco de dados
+# PASSO 1: Importar bibliotecas
+import pika
+import json
+from src.s2.rdb import verificar_dado_medico, inserir_dado_medico, remover_dado_medico, consultar_dado_medico
 
-# Função de callback que será chamada toda vez que uma mensagem for recebida na fila
+# PASSO 2: Criar função de callback para processar as mensagens
 def callback(ch, method, properties, body):
     try:
-        # Converte a mensagem recebida (que está em formato JSON) para um dicionário Python
         mensagem = json.loads(body)
+        dados = mensagem.get('dados')
+        fila = method.routing_key
         
-        # Extrai os dados da mensagem
-        funcao = mensagem.get('funcao')  # A chave 'funcao' define qual ação o consumidor deve realizar
-        dados = mensagem.get('dados')  # A chave 'dados' contém os dados a serem processados
-
         # Imprime o que foi recebido
-        print(f" [x] Recebido")
-        #print(f" [x] Recebido: função={funcao}, dados={dados}")
+        print(" [x] Recebido")
+        #print(f" [x] Recebido: função={fila}, dados={dados}")
 
-        # Variável para armazenar o resultado da operação
-        resultado = None
-
-        # Verifica qual função foi solicitada pela mensagem e executa a operação correspondente
-        if funcao == 'adicionar_medico':
-            # Chama a função para inserir os dados do médico no banco de dados
+        if fila == 'verificar_medico':
+            sucesso, mensagem_resultado = verificar_dado_medico(dados)
+            resultado = {'resultado': sucesso, 'mensagem': mensagem_resultado}
+        elif fila == 'adicionar_medico':
             sucesso, mensagem_resultado = inserir_dado_medico(dados)
             resultado = {'resultado': sucesso, 'mensagem': mensagem_resultado}
-            
-        elif funcao == 'remover_medico':
-            # Chama a função para inserir os dados do médico no banco de dados
+        elif fila == 'remover_medico':
             sucesso, mensagem_resultado = remover_dado_medico(dados)
             resultado = {'resultado': sucesso, 'mensagem': mensagem_resultado}
-        
-        elif funcao == 'verificar_medico':
-            # Chama a função para verificar se o médico já existe no banco de dados
-            existe = verificar_dado_medico(dados)
-            resultado = {'resultado': existe, 'mensagem': 'Verificação concluída'}
+        elif fila == 'consultar_medico':
+            sucesso, mensagem_resultado = consultar_dado_medico(dados)
+            resultado = {'resultado': sucesso, 'mensagem': mensagem_resultado}
         else:
-            # Caso a função não seja reconhecida
-            resultado = {'resultado': False, 'mensagem': f'Função desconhecida: {funcao}'}
-
-        # Se a mensagem original pediu uma resposta (indicado pela propriedade 'reply_to')
+            print('Nenhuma operação encontrada')
+            
         if properties.reply_to:
-            # Envia a resposta de volta para a fila de resposta especificada
             ch.basic_publish(
-                exchange='',  # Não estamos usando um exchange, apenas a fila direta
-                routing_key=properties.reply_to,  # Fila de resposta
-                body=json.dumps(resultado),  # A resposta em formato JSON
-                properties=pika.BasicProperties(  # Define as propriedades da mensagem de resposta
-                    correlation_id=properties.correlation_id  # Correlation ID para rastrear a resposta
+                exchange = '',
+                routing_key = properties.reply_to,
+                body = json.dumps(resultado),
+                properties = pika.BasicProperties(
+                    correlation_id=properties.correlation_id
+                    )
                 )
-            )
-
-        # Confirma que a mensagem foi processada com sucesso
         ch.basic_ack(delivery_tag=method.delivery_tag)
 
     except Exception as e:
-        # Se ocorrer algum erro durante o processamento, exibe a mensagem de erro
-        print(f" [!] Erro ao processar mensagem: {e}")
-        # Se ocorreu um erro, a mensagem é negada e não é reencaminhada para outra fila
+        print("Erro", e)
         ch.basic_nack(delivery_tag=method.delivery_tag, requeue=False)
 
+# PASSO 3: Configurar a conexão com o RabbitMQ
+rabbitmq_host = "localhost"
+credenciais = pika.PlainCredentials('guest', 'guest')
+paramentros_conexao = pika.ConnectionParameters(rabbitmq_host, 5672, '/', credenciais)
 
-# Configuração da conexão com o RabbitMQ
-rabbitmq_host = "localhost"  # Define o host do RabbitMQ
-credentials = pika.PlainCredentials('guest', 'guest')  # Credenciais para autenticação no RabbitMQ
-parameters = pika.ConnectionParameters(rabbitmq_host, 5672, '/', credentials)  # Parâmetros de conexão
+# PASSO 4: Abrir o canal e a conexão para a comunicação com RabbitMQ
+conexao = pika.BlockingConnection(paramentros_conexao)
+canal = conexao.channel()
 
-# Estabelece a conexão com o RabbitMQ
-connection = pika.BlockingConnection(parameters)
-# Cria um canal de comunicação
-channel = connection.channel()
+# PASSO 5: Declarar a fila de onde o consumidor vai escutar
+lista_filas = ['verificar_medico', 'adicionar_medico', 'remover_medico', 'consultar_medico']
+# PASSO 6: Consumir as mensagens da fila
+for fila in lista_filas:
+    canal.queue_declare(queue=fila, durable=True)
+    canal.basic_consume(queue=fila, on_message_callback=callback)
 
-# Declara a fila 'medico', garantindo que ela exista
-channel.queue_declare(queue='medico', durable=True)  # 'durable=True' garante que a fila persista mesmo após reiniciar o RabbitMQ
-
-# Diz ao canal que o callback acima será executado quando uma mensagem for recebida na fila 'medico'
-channel.basic_consume(queue='medico', on_message_callback=callback)
-
-# Inicia o consumo da fila e aguarda novas mensagens
+# PASSO 7: Iniciar o consumo de mensagens
+print()
+print("......")
 print(' [*] Aguardando mensagens. Para sair pressione CTRL+C')
-channel.start_consuming()
+print("......")
+print()
+canal.start_consuming()
