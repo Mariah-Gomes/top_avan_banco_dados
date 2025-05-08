@@ -1,59 +1,49 @@
-import pika  # Biblioteca para comunicação com RabbitMQ
-import json  # Biblioteca para converter objetos Python em JSON
+# PASSO 1: Imports
+import pika
+import json
 
-def enviar_mensagem(nome_funcao, dados, reply_to=None, correlation_id=None):
-    # Define o endereço do servidor RabbitMQ (localhost significa máquina local)
+def enviar_mensagem(nome_fila, dados, reply_to=None, correlation_id=None):
+    # PASSO 2: Configurar conexão
     rabbitmq_host = "localhost"
+    credenciais = pika.PlainCredentials('guest', 'guest')
+    paramentros_conexao = pika.ConnectionParameters(rabbitmq_host, 5672, '/', credenciais)
     
-    # Cria as credenciais padrão para autenticação (usuário guest, senha guest)
-    credentials = pika.PlainCredentials('guest', 'guest')
-    
-    # Define os parâmetros de conexão (host, porta, virtual host, credenciais)
-    parameters = pika.ConnectionParameters(rabbitmq_host, 5672, '/', credentials)
-    
-    # Inicializa a variável da conexão (será usada no try e fechada no finally)
-    connection = None
-
+    # PASSO 3: Abrir Conexão
     try:
-        # Abre uma conexão bloqueante com o RabbitMQ
-        connection = pika.BlockingConnection(parameters)
+        conexao = pika.BlockingConnection(paramentros_conexao)
+        canal = conexao.channel()
         
-        # Cria um canal de comunicação dentro da conexão
-        channel = connection.channel()
+        # PASSO 4: Declarar fila
+        canal.queue_declare(queue=nome_fila, durable=True)
         
-        # Declara (ou garante que existe) a fila chamada 'medico'
-        # O parâmetro durable=True faz a fila sobreviver a reinícios do servidor
-        channel.queue_declare(queue='medico', durable=True)
+        # PASSO 5: Montar corpo da mensagem
+        mensagem = {'dados': dados}
 
-        # Monta o corpo da mensagem como um dicionário
-        mensagem = {
-            'funcao': nome_funcao,  # Nome da função que o consumidor deve executar
-            'dados': dados           # Dados que serão enviados para essa função
-        }
+        # PASSO 6: Configurar propriedades da mensagem
+        propriedades_mensagem = pika.BasicProperties(
+            delivery_mode=2,
+            reply_to=reply_to,
+            correlation_id=correlation_id)
 
-        # Define as propriedades da mensagem
-        props = pika.BasicProperties(
-            delivery_mode=2,          # Torna a mensagem persistente (salva em disco)
-            reply_to=reply_to,        # Nome da fila para onde a resposta deve ser enviada (se necessário)
-            correlation_id=correlation_id  # ID único para correlacionar requisição e resposta
+        # PASSO 7: Publicar mensagem na fila
+        canal.basic_publish(
+            exchange='',
+            routing_key=nome_fila,
+            body=json.dumps(mensagem),
+            properties=propriedades_mensagem    
         )
 
-        # Publica (envia) a mensagem para a fila 'medico'
-        channel.basic_publish(
-            exchange='',              # Exchange padrão (sem troca personalizada)
-            routing_key='medico',     # Nome da fila de destino
-            body=json.dumps(mensagem),  # Converte o dicionário mensagem para JSON
-            properties=props           # Adiciona as propriedades configuradas acima
-        )
-
-        # Exibe no terminal que a mensagem foi enviada com sucesso
-        print("[x] Mensagem enviada para a fila!")
-    
+        # PASSO 8: Imprimir mensagem de sucesso
+        print()
+        print("......")
+        print(" [x] Mensagem enviada para a fila!")
+        print("......")
+        print()
+        
     except Exception as e:
-        # Se ocorrer algum erro durante o envio, exibe a mensagem de erro
-        print(f"Erro ao enviar mensagem: {e}")
-    
+        print('Erro ao inserir a mensagem', e)
+
+    # PASSO 9: Fechar a conexão com segurança
     finally:
-        # No final (com ou sem erro), verifica se a conexão está aberta e fecha ela
-        if connection and connection.is_open:
-            connection.close()
+        if conexao and conexao.is_open:
+            conexao.close()
