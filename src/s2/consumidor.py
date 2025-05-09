@@ -1,7 +1,7 @@
 # PASSO 1: Importar bibliotecas
 import pika
 import json
-from src.s2.rdb import verificar_dado_medico, inserir_dado_medico, remover_dado_medico, consultar_dado_medico
+from src.s2.rdb import verificar_dado_medico, inserir_dado_medico, remover_dado_medico, consultar_dado_medico, listar_dado_medico
 
 # PASSO 2: Criar função de callback para processar as mensagens
 def callback(ch, method, properties, body):
@@ -25,6 +25,9 @@ def callback(ch, method, properties, body):
             resultado = {'resultado': sucesso, 'mensagem': mensagem_resultado}
         elif fila == 'consultar_medico':
             sucesso, mensagem_resultado = consultar_dado_medico(dados)
+            resultado = {'resultado': sucesso, 'mensagem': mensagem_resultado}
+        elif fila == 'listar_medicos':
+            sucesso, mensagem_resultado = listar_dado_medico()
             resultado = {'resultado': sucesso, 'mensagem': mensagem_resultado}
         else:
             print('Nenhuma operação encontrada')
@@ -54,7 +57,7 @@ conexao = pika.BlockingConnection(paramentros_conexao)
 canal = conexao.channel()
 
 # PASSO 5: Declarar a fila de onde o consumidor vai escutar
-lista_filas = ['verificar_medico', 'adicionar_medico', 'remover_medico', 'consultar_medico']
+lista_filas = ['verificar_medico', 'adicionar_medico', 'remover_medico', 'consultar_medico', 'listar_medicos']
 # PASSO 6: Consumir as mensagens da fila
 for fila in lista_filas:
     canal.queue_declare(queue=fila, durable=True)

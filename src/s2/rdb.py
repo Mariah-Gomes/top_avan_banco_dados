@@ -44,7 +44,7 @@ def remover_dado_medico(crm):
             return False, mensagem
     
     except Exception as e:
-        mensagem = f"Erro ao inserir dado no banco de dados: {str(e)}"
+        mensagem = f"Erro ao deletar dado no banco de dados: {str(e)}"
         print(mensagem)
         return False, mensagem
     
@@ -53,8 +53,7 @@ def remover_dado_medico(crm):
 def consultar_dado_medico(crm):
     try:
         consulta_response = supabase.table("medico").select("*").eq("crm", crm).execute()
-        print(consulta_response)
-        if consulta_response.data and len(consulta_response.data) > 0:
+        if consulta_response.data:
             linha = consulta_response.data[0]
             crm = linha['crm']
             nome = linha['nome']
@@ -63,11 +62,34 @@ def consultar_dado_medico(crm):
             print(mensagem)
             return True, mensagem
         else:
-            mensagem = f"Erro ao deletar: {consulta_response.error}"
+            mensagem = f"Erro ao consultar: {consulta_response.error}"
             print(mensagem)
             return False, mensagem
     
     except Exception as e:
-        mensagem = f"Erro ao inserir dado no banco de dados: {str(e)}"
+        mensagem = f"Erro ao consultar dado no banco de dados: {str(e)}"
         print(mensagem)
         return False, mensagem
+    
+def listar_dado_medico():
+    try:
+        consulta_response = supabase.table("medico").select("*").execute()
+        mensagens = []
+        if consulta_response.data:
+            for linha in consulta_response.data:
+                crm = linha['crm']
+                nome = linha['nome']
+                especialidade = linha['especializacao']
+                mensagem = (f"---------------\nNome: {nome} \nCRM: {crm} \nEspecialização: {especialidade}\n---------------\n")
+                mensagens.append(mensagem)  # Adiciona cada mensagem à lista
+            return True, "\n".join(mensagens)  # Retorna todas as mensagens de uma vez
+        else:
+            mensagem = f"Erro ao listar: {consulta_response.error}"
+            print(mensagem)
+            return False, mensagem
+        
+    except Exception as e:
+        mensagem = f"Erro ao listar dado no banco de dados: {str(e)}"
+        print(mensagem)
+        return False, mensagem
+        
