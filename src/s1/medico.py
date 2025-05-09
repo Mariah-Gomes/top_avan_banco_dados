@@ -127,3 +127,7 @@ def consultar_medico():
     
     resultado = enviar_mensagem_aguardando('consultar_medico', crm)  # Envia os dados para adicionar no backend
     print(resultado['mensagem'])
+    
+def listar_medicos():
+    resultado = enviar_mensagem_aguardando('listar_medicos', None)  # Envia os dados para adicionar no backend
+    print(resultado['mensagem'])
