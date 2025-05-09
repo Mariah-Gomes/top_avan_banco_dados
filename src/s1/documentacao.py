@@ -1,3 +1,5 @@
+#from src.s1.medico import adicionar_medico, remover_medico, consultar_medico, listar_medicos
+
 def menu_documentacao():
     print("Menu Documentação: ")
     print("---------------")
