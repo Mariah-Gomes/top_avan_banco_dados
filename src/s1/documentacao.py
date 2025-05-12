@@ -1,5 +1,3 @@
-#from src.s1.medico import adicionar_medico, remover_medico, consultar_medico, listar_medicos
-
 def menu_documentacao():
     print("Menu Documentação: ")
     print("---------------")
@@ -15,7 +13,7 @@ def menu_documentacao():
     elif opcao == 2:
         print("Buscar laudo")
     elif opcao == 3:
-        print("Registrar exame")
+        registrar_exame()
     elif opcao == 4:
         print("Buscar exame")
     elif opcao == 5:
@@ -23,3 +21,16 @@ def menu_documentacao():
     else:
         print("Opção inválida!")
     print()
+
+def registrar_exame():
+    # Digite o CPF do paciente
+    # Verifica se o CPF está no sistema
+
+    # Digite a data do exame
+    data_exame = input("Digite a data do exame: ")    
+
+    # Digite o tipo do exame
+    tipo_exame = input("Digite o tipo do exame: ") 
+    print("Seu exame é: ", tipo_exame)    
+
+    
