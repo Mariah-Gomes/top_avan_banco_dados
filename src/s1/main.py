@@ -2,6 +2,7 @@ from src.s1.dados import menu_dados
 from src.s1.consulta import menu_consulta
 from src.s1.documentacao import menu_documentacao
 from src.s1.acompanhamento import acompanhamento
+from src.s1.auditoria import exportar_para_csv
 
 # Loop principal:
 print("Bem-vindo(a) ao Sistema AgendaMed!!!")
@@ -29,6 +30,7 @@ while(True):
         acompanhamento()
     elif opcao == 5:
         print("Tchau!")
+        exportar_para_csv()
         break
     else:
         print("Opção inválida!")
