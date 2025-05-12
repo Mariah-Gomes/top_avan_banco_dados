@@ -1,0 +1,98 @@
+id,fila,conteudo,resultado,data_envio
+1,verificar_medico,Não existe no sistema,0,2025-05-12 10:22:02
+2,adicionar_medico,Médico cadastrado com sucesso,1,2025-05-12 10:22:06
+3,verificar_medico,Não existe no sistema,0,2025-05-12 10:31:36
+4,adicionar_medico,Médico cadastrado com sucesso,1,2025-05-12 10:31:39
+5,verificar_medico,Não existe no sistema,ERRO,2025-05-12 10:48:32
+6,adicionar_medico,Médico cadastrado com sucesso,SUCESSO,2025-05-12 10:48:39
+7,verificar_medico,"Não existe no sistema, pronto para cadastro.",SUCESSO,2025-05-12 11:05:37
+8,verificar_medico,"Não existe no sistema, pronto para cadastro.",SUCESSO,2025-05-12 11:07:33
+9,adicionar_medico,Médico cadastrado com sucesso,SUCESSO,2025-05-12 11:07:37
+10,verificar_medico,"Não existe no sistema, pronto para cadastro.",SUCESSO,2025-05-12 15:21:03
+11,adicionar_medico,Médico Castro cadastrado com sucesso,SUCESSO,2025-05-12 15:21:07
+12,verificar_medico,Medico: Jacob (CRM: 2112) existe no sistema,SUCESSO,2025-05-12 15:21:53
+13,remover_medico,Médico com CRM 2112 deletado com sucesso,SUCESSO,2025-05-12 15:21:53
+14,verificar_medico,Medico: Ednaldo (CRM: 666) existe no sistema,SUCESSO,2025-05-12 15:22:22
+15,consultar_medico,"Nome: Ednaldo 
+CRM: 666 
+Especialização: Sla",SUCESSO,2025-05-12 15:22:23
+16,listar_medicos,"---------------
+Nome: Soraya 
+CRM: 2222 
+Especialização: Cardiologista
+---------------
+
+---------------
+Nome: Ednaldo 
+CRM: 666 
+Especialização: Sla
+---------------
+
+---------------
+Nome: Renata 
+CRM: 787 
+Especialização: Sla
+---------------
+
+---------------
+Nome: Iago 
+CRM: 656 
+Especialização: Sla
+---------------
+
+---------------
+Nome: Ana 
+CRM: 9090 
+Especialização: Sla
+---------------
+
+---------------
+Nome: Alice 
+CRM: 876855 
+Especialização: Sla
+---------------
+
+---------------
+Nome: Vivian 
+CRM: 467 
+Especialização: Sla
+---------------
+
+---------------
+Nome: Rosilene 
+CRM: 9875 
+Especialização: Sla
+---------------
+
+---------------
+Nome: Luma 
+CRM: 1704 
+Especialização: Sla
+---------------
+
+---------------
+Nome: Naruto 
+CRM: 9 
+Especialização: Jutsu
+---------------
+
+---------------
+Nome: Josilene 
+CRM: 1129849239 
+Especialização: Sla
+---------------
+
+---------------
+Nome: Castro 
+CRM: 940395 
+Especialização: Sla
+---------------
+",SUCESSO,2025-05-12 15:23:10
+17,verificar_medico,Medico: Ednaldo (CRM: 666) existe no sistema,SUCESSO,2025-05-12 16:43:52
+18,consultar_medico,Médico consultado no sistema,SUCESSO,2025-05-12 16:43:52
+19,verificar_medico,Ação 'verificar_medico' executada. Resultado: Não existe no sistema com o CRM: 12,SUCESSO,2025-05-12 16:59:40
+20,adicionar_medico,Ação 'adicionar_medico' executada. Resultado: Médico Lalala cadastrado com sucesso,SUCESSO,2025-05-12 16:59:44
+21,verificar_medico,Ação 'verificar_medico' executada. Resultado: Medico: Naruto (CRM: 9) existe no sistema,SUCESSO,2025-05-12 17:07:57
+22,verificar_medico,Ação 'verificar_medico' executada. Resultado: Medico: Naruto (CRM: 9) existe no sistema,SUCESSO,2025-05-12 17:08:44
+23,consultar_medico,Ação 'consultar_medico' executada. Resultado: Médico Naruto consultado com sucesso,SUCESSO,2025-05-12 17:08:44
+24,listar_medicos,Ação 'listar_medicos' executada. Resultado: Foi possível ver uma lista com todos os médicos cadastrados,SUCESSO,2025-05-12 17:09:05
