@@ -63,7 +63,7 @@ def adicionar_medico():
 
     # Verifica se o CRM já está cadastrado
     ja_cadastrado = verificacao_medico(crm)
-    if ja_cadastrado:
+    if not ja_cadastrado:
         print("Operação cancelada: não é possível adicionar médico com CRM já cadastrado.")
         return  # Interrompe a função se já estiver cadastrado
     print()
