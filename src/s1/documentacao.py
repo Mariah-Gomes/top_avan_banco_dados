@@ -1,3 +1,8 @@
+import tkinter as tk
+from tkinter import filedialog, messagebox
+import re
+import fitz  # PyMuPDF
+
 def menu_documentacao():
     print("Menu Documentação: ")
     print("---------------")
@@ -23,14 +28,30 @@ def menu_documentacao():
     print()
 
 def registrar_exame():
-    # Digite o CPF do paciente
-    # Verifica se o CPF está no sistema
+    exames = []
 
-    # Digite a data do exame
-    data_exame = input("Digite a data do exame: ")    
+    cpf = input("Digite o CPF do paciente: ")
+    data = input("Digite a data dos exames (formato: DD/MM/AAAA): ")
+    quant_exames = int(input("Digite quantos exames foram realizados: "))
 
-    # Digite o tipo do exame
-    tipo_exame = input("Digite o tipo do exame: ") 
-    print("Seu exame é: ", tipo_exame)    
+    for i in range(quant_exames):
+        print(f"\n--- Exame {i+1} ---")
+        tipo = input("Digite o tipo do exame: ")
+        resultado = input("Digite o resultado do exame: ")
 
-    
+        exame = {
+            'tipo': tipo,
+            'resultado': resultado,
+        }
+        exames.append(exame)
+
+    # Prepara os dados finais
+    dados_para_envio = {
+        'cpf_paciente': cpf,
+        'exames': exames,
+        'data': data  # mesma data para todos
+    }
+
+    # Envia via mensageria
+    resposta = enviar_mensagem_aguardando('registrar_exames', dados_para_envio)
+    print(resposta['mensagem'])

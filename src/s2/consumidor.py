@@ -38,6 +38,23 @@ def callback(ch, method, properties, body):
         elif fila == 'listar_medicos':
             sucesso, mensagem_retorno, mensagem_a = listar_dado_medico()
             
+        elif fila == 'verificar_paciente':
+            sucesso, mensagem_retorno, mensagem_a = verificar_dado_medico(dados)
+            if not sucesso:
+                sucesso = True
+                
+        elif fila == 'adicionar_paciente':
+            print()
+            
+        elif fila == 'remover_paciente':
+            print()
+            
+        elif fila == 'consultar_paciente':
+            print()
+        
+        elif fila == 'listar_paciente':
+            print()
+        
         else:
             print("Operação Desconhecida")
             #sucesso = False
@@ -76,7 +93,8 @@ conexao = pika.BlockingConnection(paramentros_conexao)
 canal = conexao.channel()
 
 # PASSO 5: Declarar a fila de onde o consumidor vai escutar
-lista_filas = ['verificar_medico', 'adicionar_medico', 'remover_medico', 'consultar_medico', 'listar_medicos']
+lista_filas = ['verificar_medico', 'adicionar_medico', 'remover_medico', 'consultar_medico', 'listar_medicos', 
+               'verificar_paciente', 'adicionar_paciente', 'remover_paciente', 'consultar_paciente', 'listar_paciente']
 # PASSO 6: Consumir as mensagens da fila
 for fila in lista_filas:
     canal.queue_declare(queue=fila, durable=True)
