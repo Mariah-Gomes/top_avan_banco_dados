@@ -1,3 +1,4 @@
+from datetime import datetime
 from src.s1.rabbitmq_utils import enviar_mensagem_aguardando
 
 # Função para verificar se um CRM já está cadastrado
@@ -30,8 +31,15 @@ def adicionar_paciente():
     data_nascimento = input("Digite a de nascimento do paciente: ")
     sexo = input("Digite o sexo do paciente: ")
 
+    # ✅ Converte a data para o formato ISO aceito pelo banco
+    try:
+        data_formatada = datetime.strptime(data_nascimento, "%d/%m/%Y").strftime("%Y-%m-%d")
+    except ValueError:
+        print("Formato de data inválido. Use o formato DD/MM/AAAA.")
+        return
+
     # Prepara os dados do médico para envio
-    dados = {'nome': nome_paciente, 'cpf': cpf, 'data_de_nascimento': data_nascimento, 'sexo': sexo}
+    dados = {'nome': nome_paciente, 'cpf': cpf, 'data_de_nascimento': data_formatada, 'sexo': sexo}
     resultado = enviar_mensagem_aguardando('adicionar_paciente', dados)  # Envia os dados para adicionar no backend
     print(resultado['mensagem'])
     
@@ -51,7 +59,7 @@ def remover_paciente():
     resultado = enviar_mensagem_aguardando('remover_paciente', cpf)  # Envia os dados para adicionar no backend
     print(resultado['mensagem'])
     
-def consultar_medico():
+def consultar_paciente():
     cpf = input("Digite o CPF do paciente: ")
     ja_cadastrado = verificacao_paciente(cpf)
     if not ja_cadastrado:

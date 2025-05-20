@@ -1,4 +1,5 @@
 from src.s1.medico import adicionar_medico, remover_medico, consultar_medico, listar_medicos
+from src.s1.paciente import adicionar_paciente, remover_paciente, consultar_paciente, listar_pacientes
 
 def menu_dados():
     print("Menu Dados: ")
@@ -49,13 +50,13 @@ def cadastrar(quem):
     if quem == "Médico":
         adicionar_medico()
     elif quem == "Paciente":
-        print(f'Cadastrar {quem}')
+        adicionar_paciente()
         
 def remover(quem):
     if quem == "Médico":
         remover_medico()
     elif quem == "Paciente":
-        print(f'Remover {quem}')
+        remover_paciente()
         
 #def editar(quem):
 #    if quem == "Médico":
@@ -67,10 +68,10 @@ def consultar(quem):
     if quem == "Médico":
         consultar_medico()
     elif quem == "Paciente":
-        print(f'Consultar {quem}')
+        consultar_paciente()
         
 def listar(quem):
     if quem == "Médico":
         listar_medicos()
     elif quem == "Paciente":
-        print(f'Listar {quem}')
+        listar_pacientes()

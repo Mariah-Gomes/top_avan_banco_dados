@@ -2,6 +2,7 @@
 import pika
 import json
 from src.s2.rdb import verificar_dado_medico, inserir_dado_medico, remover_dado_medico, consultar_dado_medico, listar_dado_medico
+from src.s2.rdb import verificar_dado_paciente, inserir_dado_paciente, remover_dado_paciente, consultar_dado_paciente, listar_dado_paciente
 from src.s1.auditoria import salvar_mensagem, criar_tabela
 
 # PASSO 2: Criar função de callback para processar as mensagens
@@ -39,21 +40,21 @@ def callback(ch, method, properties, body):
             sucesso, mensagem_retorno, mensagem_a = listar_dado_medico()
             
         elif fila == 'verificar_paciente':
-            sucesso, mensagem_retorno, mensagem_a = verificar_dado_medico(dados)
+            sucesso, mensagem_retorno, mensagem_a = verificar_dado_paciente(dados)
             if not sucesso:
                 sucesso = True
                 
         elif fila == 'adicionar_paciente':
-            print()
+            sucesso, mensagem_retorno, mensagem_a = inserir_dado_paciente(dados)
             
         elif fila == 'remover_paciente':
-            print()
+            sucesso, mensagem_retorno, mensagem_a = remover_dado_paciente(dados)
             
         elif fila == 'consultar_paciente':
-            print()
+            sucesso, mensagem_retorno, mensagem_a = consultar_dado_paciente(dados)
         
         elif fila == 'listar_paciente':
-            print()
+            sucesso, mensagem_retorno, mensagem_a = listar_dado_paciente()
         
         else:
             print("Operação Desconhecida")
