@@ -1,3 +1,5 @@
+from src.s1.medico import adicionar_medico, remover_medico, consultar_medico, listar_medicos
+
 def menu_dados():
     print("Menu Dados: ")
     print("---------------")
@@ -30,13 +32,14 @@ def menu_quem(quem):
     if opcao == 1:
         cadastrar(quem)
     elif opcao == 2:
-        print(f'Remover {quem}')
+        remover(quem)
     elif opcao == 3:
-        print(f'Editar {quem}')
+        print('Editar')
+        #editar(quem)
     elif opcao == 4:
-        print(f'Consultar {quem}')
+        consultar(quem)
     elif opcao == 5:
-        print(f'Listar {quem}')
+        listar(quem)
     elif opcao == 6:
         print("Tchau!")
     else:
@@ -44,6 +47,30 @@ def menu_quem(quem):
 
 def cadastrar(quem):
     if quem == "Médico":
-        print(f'Cadastrar {quem}')
+        adicionar_medico()
     elif quem == "Paciente":
         print(f'Cadastrar {quem}')
+        
+def remover(quem):
+    if quem == "Médico":
+        remover_medico()
+    elif quem == "Paciente":
+        print(f'Remover {quem}')
+        
+#def editar(quem):
+#    if quem == "Médico":
+#        print(f'Editar {quem}')
+#    elif quem == "Paciente":
+#        print(f'Editar {quem}')
+        
+def consultar(quem):
+    if quem == "Médico":
+        consultar_medico()
+    elif quem == "Paciente":
+        print(f'Consultar {quem}')
+        
+def listar(quem):
+    if quem == "Médico":
+        listar_medicos()
+    elif quem == "Paciente":
+        print(f'Listar {quem}')
