@@ -110,3 +110,19 @@ Especialização: Sla
 36,listar_paciente,Ação 'listar_paciente' executada. Resultado: Foi possível ver uma lista com todos os pacientes cadastrados,SUCESSO,2025-05-20 20:25:03
 37,verificar_paciente,Ação 'verificar_paciente' executada. Resultado: Paciente: Jacob (CPF: 6262) existe no sistema,SUCESSO,2025-05-20 20:25:16
 38,remover_paciente,Ação 'remover_paciente' executada. Resultado: Paciente Jacob deletado com sucesso,SUCESSO,2025-05-20 20:25:16
+39,verificar_paciente,Ação 'verificar_paciente' executada. Resultado: Não existe no sistema com o CPF: 148,SUCESSO,2025-05-21 11:39:49
+40,adicionar_paciente,Ação 'adicionar_paciente' executada. Resultado: Paciente Marcos cadastrado com sucesso,SUCESSO,2025-05-21 11:40:03
+41,buscar_ids,"Ação 'buscar_ids' executada. Resultado: Buscado: Médico=Luma, Paciente=Marcos, CPF=148",SUCESSO,2025-05-21 11:51:33
+42,buscar_ids,"Ação 'buscar_ids' executada. Resultado: Buscado: Médico=Luma, Paciente=Marcos, CPF=148",SUCESSO,2025-05-21 12:45:40
+43,verificar_paciente,Ação 'verificar_paciente' executada. Resultado: Não existe no sistema com o CPF: 2112,SUCESSO,2025-05-21 13:00:55
+44,adicionar_paciente,Ação 'adicionar_paciente' executada. Resultado: Paciente Jacob cadastrado com sucesso,SUCESSO,2025-05-21 13:01:04
+45,verificar_paciente,Ação 'verificar_paciente' executada. Resultado: Não existe no sistema com o CPF: 666,SUCESSO,2025-05-21 14:20:40
+46,adicionar_paciente,"Ação 'adicionar_paciente' executada. Resultado: Erro ao inserir dado no banco de dados: {'code': '22001', 'details': None, 'hint': None, 'message': 'value too long for type character(1)'}",ERRO,2025-05-21 14:20:54
+47,verificar_paciente,Ação 'verificar_paciente' executada. Resultado: Não existe no sistema com o CPF: 666,SUCESSO,2025-05-21 14:21:14
+48,adicionar_paciente,Ação 'adicionar_paciente' executada. Resultado: Paciente Ednaldo cadastrado com sucesso,SUCESSO,2025-05-21 14:21:23
+49,verificar_medico,Ação 'verificar_medico' executada. Resultado: Não existe no sistema com o CRM: 023949328,SUCESSO,2025-05-21 14:22:01
+50,adicionar_medico,Ação 'adicionar_medico' executada. Resultado: Médico Antonella cadastrado com sucesso,SUCESSO,2025-05-21 14:22:04
+51,verificar_medico,Ação 'verificar_medico' executada. Resultado: Medico: Ednaldo (CRM: 666) existe no sistema,SUCESSO,2025-05-21 15:46:36
+52,adicionar_medico,"Ação 'adicionar_medico' executada. Resultado: Erro ao inserir dado no banco de dados: {'code': '23505', 'details': 'Key (crm)=(666) already exists.', 'hint': None, 'message': 'duplicate key value violates unique constraint ""medico_crm_key""'}",ERRO,2025-05-21 15:46:49
+53,verificar_paciente,Ação 'verificar_paciente' executada. Resultado: Não existe no sistema com o CPF: 149,SUCESSO,2025-05-21 16:07:46
+54,adicionar_paciente,Ação 'adicionar_paciente' executada. Resultado: Paciente Ivanise cadastrado com sucesso,SUCESSO,2025-05-21 16:07:58
