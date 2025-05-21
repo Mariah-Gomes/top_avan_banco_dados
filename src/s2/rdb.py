@@ -214,20 +214,43 @@ def listar_dado_paciente():
         return False, retorno, auditoria
     
 def buscar_ids_paciente_medico(dados):
-    nome_medico = dados.get("nome_medico")
-    cpf = dados.get("cpf")
-    
-    consulta_medico = supabase.table("medico").select("id").eq("nome", nome_medico).execute()
-    consulta_paciente = supabase.table("paciente").select("id, nome").eq("cpf", cpf).execute()
-    paciente_id = consulta_paciente.data[0]['id']
-    paciente_nome = consulta_paciente.data[0]['nome']
-    
-    #print("Buscando IDs...")
-    #print("Médico:", nome_medico)
-    #print("Paciente:", nome_paciente)
-    #print("CPF:", cpf)
-       
-    retorno = f"Buscado: Médico={nome_medico}, Paciente={paciente_nome}, CPF={cpf}" 
-    auditoria = retorno
+    try:
+        nome_medico = dados.get("nome_medico")
+        cpf = dados.get("cpf")
 
-    return True, retorno, auditoria
+        consulta_medico = supabase.table("medico").select("id").eq("nome", nome_medico).execute()
+        consulta_paciente = supabase.table("paciente").select("id, nome").eq("cpf", cpf).execute()
+
+        id_medico = consulta_medico.data[0]['id'] if consulta_medico.data else None
+        id_paciente = consulta_paciente.data[0]['id'] if consulta_paciente.data else None
+
+        if id_medico and id_paciente:
+            mensagem = "Buscado: Médico cadastrado, Paciente cadastrado"
+            sucesso = True
+            
+        elif id_medico and not id_paciente:
+            mensagem = "Médico cadastrado, Paciente não cadastrado"
+            sucesso = False
+            
+        elif not id_medico and id_paciente:
+            mensagem = "Médico não cadastrado, Paciente cadastrado"
+            sucesso = False
+            
+        else:
+            mensagem = "Ambos não são cadastrados no sistema"
+            auditoria = mensagem
+            sucesso = False
+
+        dicionario_resposta = {
+            "mensagem": mensagem,
+            "id_medico": id_medico,
+            "id_paciente": id_paciente
+        }
+
+        auditoria = mensagem
+        return sucesso, dicionario_resposta, auditoria
+
+    except Exception as e:
+        mensagem = f"Erro ao verificar dados: {str(e)}"
+        auditoria = mensagem
+        return False, {"mensagem": mensagem, "id_medico": None, "id_paciente": None}, auditoria

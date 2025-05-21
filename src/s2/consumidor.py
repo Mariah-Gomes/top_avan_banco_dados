@@ -90,10 +90,10 @@ for fila in lista_filas:
     canal.queue_declare(queue=fila, durable=True)
     canal.basic_consume(queue=fila, on_message_callback=callback)
 
-print()
+print("", flush=True)
 print("......", flush=True)
 print(' [*] Aguardando mensagens. Para sair pressione CTRL+C', flush=True)
 print("......", flush=True)
-print()
+print("", flush=True)
 
 canal.start_consuming()
