@@ -24,25 +24,55 @@ def menu_consulta():
         print("Opção inválida!")
     print()
 
+def consultar_id():
+    nome_medico = input("Digite o nome do médico: ") 
+    cpf = input("Digite o CPF do paciente: ")
+
+    dados = {'nome_medico': nome_medico, 'cpf': cpf}
+    resposta = enviar_mensagem_aguardando("buscar_ids", dados)
+
+    if not resposta.get("resultado"):
+        print("❌ Erro:", resposta.get("mensagem"))
+        return None
+
+    ids = resposta.get("mensagem")
+
+    print(ids.get("mensagem"))
+    print("Médico ID:", ids.get("id_medico"))
+    print("Paciente ID:", ids.get("id_paciente"))
+
+    return ids  # Retorna o dicionário com os IDs
+
 #def verificao_disponibilidade():
  #   resultado = enviar_mensagem_aguardando('verificar_disponibilidade', crm)  # Envia o CRM para verificar no backend
 
 
 def agendar():
-    nome_medico = input("Digite o nome do médico: ") 
-    nome_paciente = input("Digite o nome do paciente: ")
-    cpf = input("Digite o CPF do paciente: ")
+    ids = consultar_id()
+    if not ids:
+        return  # Se não conseguiu buscar os IDs, encerra aqui
 
-    dados = {'nome_medico': nome_medico, 'nome_paciente': nome_paciente, 'cpf': cpf}
+    id_medico = ids.get("id_medico")
+    id_paciente = ids.get("id_paciente")
+    if id_medico == None:
+        print("Médico não cadastrado no sistema")
+        return
+    elif id_paciente == None:
+        print("Paciente não cadastrado no sistema")
+        return
+    elif id_paciente == None and id_medico == None:
+        print("Paciente e médicos não cadastrado no sistema")
+        return
     
-    # Envia para mensageria e aguarda retorno dos IDs
-    ids = enviar_mensagem_aguardando("buscar_ids", dados)
-    print(ids)
+    # Verifica disponibilidade com Cassandra
+    resposta_dias = enviar_mensagem_aguardando("dias_disponiveis", {"id_medico": id_medico})
 
-    print('Retorna com possíveis dias e horários')
+
+
     
-    #dia = 
-    #hora = 
+
+
+
     
 def buscar():
     print('Busca a consulta do paciente')

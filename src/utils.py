@@ -26,14 +26,17 @@ def enviar_mensagem_aguardando(nome_funcao, dados):
 
     enviar_mensagem(nome_funcao, dados, reply_to=callback_queue, correlation_id=correlation_id)
 
-    print()
-    print('******')
-    print(' [*] Aguardando resposta...')
-    print('******')
-    print()
+    print('\n[*] Aguardando resposta do consumidor...')
 
+    # ✅ Espera até que a resposta seja recebida
     while not resposta['received']:
-        conexao.process_data_events(time_limit=1)
+        conexao.process_data_events(time_limit=0.5)
+
+    # ✅ Só fecha depois de garantir o recebimento
+    try:
+        canal.queue_delete(queue=callback_queue)
+    except Exception as e:
+        print(f"Erro ao deletar fila temporária: {e}")
 
     conexao.close()
 
