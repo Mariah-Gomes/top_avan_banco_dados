@@ -212,3 +212,22 @@ def listar_dado_paciente():
         #print(mensagem)
         auditoria = retorno
         return False, retorno, auditoria
+    
+def buscar_ids_paciente_medico(dados):
+    nome_medico = dados.get("nome_medico")
+    cpf = dados.get("cpf")
+    
+    consulta_medico = supabase.table("medico").select("id").eq("nome", nome_medico).execute()
+    consulta_paciente = supabase.table("paciente").select("id, nome").eq("cpf", cpf).execute()
+    paciente_id = consulta_paciente.data[0]['id']
+    paciente_nome = consulta_paciente.data[0]['nome']
+    
+    #print("Buscando IDs...")
+    #print("Médico:", nome_medico)
+    #print("Paciente:", nome_paciente)
+    #print("CPF:", cpf)
+       
+    retorno = f"Buscado: Médico={nome_medico}, Paciente={paciente_nome}, CPF={cpf}" 
+    auditoria = retorno
+
+    return True, retorno, auditoria

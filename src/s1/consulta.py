@@ -1,3 +1,5 @@
+from src.s1.rabbitmq_utils import enviar_mensagem_aguardando
+
 def menu_consulta():
     print("Menu Consulta: ")
     print("---------------")
@@ -9,18 +11,43 @@ def menu_consulta():
     print("---------------")
     opcao = int(input("Digite uma opção -> "))
     if opcao == 1:
-        print("Agendar")
+        agendar()
     elif opcao == 2:
-        print("Buscar")
+        buscar()
     elif opcao == 3:
-        print("Cancelar")
+        cancelar()
     elif opcao == 4:
-        print("Histórico")
+        historico()
     elif opcao == 5:
         print("Tchau!")
     else:
         print("Opção inválida!")
     print()
 
+#def verificao_disponibilidade():
+ #   resultado = enviar_mensagem_aguardando('verificar_disponibilidade', crm)  # Envia o CRM para verificar no backend
+
 def agendar():
+    nome_medico = input("Digite o nome do médico: ") 
+    nome_paciente = input("Digite o nome do paciente: ")
+    cpf = input("Digite o CPF do paciente: ")
+
+    dados = {'nome_medico': nome_medico, 'nome_paciente': nome_paciente, 'cpf': cpf}
+    
+    # Envia para mensageria e aguarda retorno dos IDs
+    ids = enviar_mensagem_aguardando("buscar_ids", dados)
+    print(ids)
+
+    print('Retorna com possíveis dias e horários')
+    
+    #dia = 
+    #hora = 
+    
+def buscar():
+    print('Busca a consulta do paciente')
+    
+def cancelar():
+    print('Muda o status de cancelada')
+    
+def historico():
     print()
