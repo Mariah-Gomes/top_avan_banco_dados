@@ -18,4 +18,4 @@ def create_table_agenda_medico(session):
     ) WITH CLUSTERING ORDER BY (data_hora ASC, consulta_id ASC);
     """
     session.execute(query)
-    print("Tabela 'agenda_medico' criada (se não existia).")
+    #print("Tabela 'agenda_medico' criada (se não existia).")
