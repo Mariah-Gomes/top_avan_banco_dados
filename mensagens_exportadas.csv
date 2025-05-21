@@ -96,3 +96,17 @@ Especialização: Sla
 22,verificar_medico,Ação 'verificar_medico' executada. Resultado: Medico: Naruto (CRM: 9) existe no sistema,SUCESSO,2025-05-12 17:08:44
 23,consultar_medico,Ação 'consultar_medico' executada. Resultado: Médico Naruto consultado com sucesso,SUCESSO,2025-05-12 17:08:44
 24,listar_medicos,Ação 'listar_medicos' executada. Resultado: Foi possível ver uma lista com todos os médicos cadastrados,SUCESSO,2025-05-12 17:09:05
+25,verificar_paciente,Ação 'verificar_paciente' executada. Resultado: Não existe no sistema com o CPF: 2615,SUCESSO,2025-05-20 19:29:30
+26,adicionar_paciente,"Ação 'adicionar_paciente' executada. Resultado: Erro ao inserir dado no banco de dados: {'code': '22008', 'details': None, 'hint': 'Perhaps you need a different ""datestyle"" setting.', 'message': 'date/time field value out of range: ""28/12/2011""'}",ERRO,2025-05-20 19:29:41
+27,verificar_paciente,Ação 'verificar_paciente' executada. Resultado: Não existe no sistema com o CPF: 9090,SUCESSO,2025-05-20 19:42:24
+28,adicionar_paciente,Ação 'adicionar_paciente' executada. Resultado: Paciente Alice cadastrado com sucesso,SUCESSO,2025-05-20 19:42:37
+29,verificar_paciente,Ação 'verificar_paciente' executada. Resultado: Não existe no sistema com o CPF: 6262,SUCESSO,2025-05-20 19:43:19
+30,adicionar_paciente,Ação 'adicionar_paciente' executada. Resultado: Paciente Jacob cadastrado com sucesso,SUCESSO,2025-05-20 19:43:33
+31,listar_paciente,Ação 'listar_paciente' executada. Resultado: Foi possível ver uma lista com todos os pacientes cadastrados,SUCESSO,2025-05-20 19:45:01
+32,verificar_paciente,Ação 'verificar_paciente' executada. Resultado: Paciente: Alice (CPF: 9090) existe no sistema,SUCESSO,2025-05-20 19:45:18
+33,consultar_paciente,Ação 'consultar_paciente' executada. Resultado: Paciente Alice consultado com sucesso,SUCESSO,2025-05-20 19:45:18
+34,verificar_paciente,Ação 'verificar_paciente' executada. Resultado: Paciente: Alice (CPF: 9090) existe no sistema,SUCESSO,2025-05-20 19:45:39
+35,remover_paciente,Ação 'remover_paciente' executada. Resultado: Paciente data=[{'nome': 'Alice'}] count=None deletado com sucesso,SUCESSO,2025-05-20 19:45:39
+36,listar_paciente,Ação 'listar_paciente' executada. Resultado: Foi possível ver uma lista com todos os pacientes cadastrados,SUCESSO,2025-05-20 20:25:03
+37,verificar_paciente,Ação 'verificar_paciente' executada. Resultado: Paciente: Jacob (CPF: 6262) existe no sistema,SUCESSO,2025-05-20 20:25:16
+38,remover_paciente,Ação 'remover_paciente' executada. Resultado: Paciente Jacob deletado com sucesso,SUCESSO,2025-05-20 20:25:16
