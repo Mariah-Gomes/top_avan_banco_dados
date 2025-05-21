@@ -21,3 +21,6 @@ def menu_consulta():
     else:
         print("Opção inválida!")
     print()
+
+def agendar():
+    print()
