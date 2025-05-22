@@ -3,6 +3,7 @@ import json
 from src.s2.rdb import verificar_dado_medico, inserir_dado_medico, remover_dado_medico, consultar_dado_medico, listar_dado_medico
 from src.s2.rdb import verificar_dado_paciente, inserir_dado_paciente, remover_dado_paciente, consultar_dado_paciente, listar_dado_paciente
 from src.s2.rdb import buscar_ids_paciente_medico
+from src.s2.cassandra import dias_disponiveis
 from src.s1.auditoria import salvar_mensagem, criar_tabela
 
 def salvar_resultado_operacao(fila, sucesso, mensagem_resultado):
@@ -44,6 +45,8 @@ def callback(ch, method, properties, body):
             sucesso, mensagem_retorno, mensagem_a = listar_dado_paciente()
         elif fila == 'buscar_ids':
             sucesso, mensagem_retorno, mensagem_a = buscar_ids_paciente_medico(dados)
+        elif fila == 'agendamento_consulta':
+            sucesso, mensagem_retorno, mensagem_a = dias_disponiveis(dados)
         else:
             print("Operação desconhecida", flush=True)
             sucesso = False
@@ -83,7 +86,7 @@ canal = conexao.channel()
 lista_filas = [
     'verificar_medico', 'adicionar_medico', 'remover_medico', 'consultar_medico', 'listar_medicos',
     'verificar_paciente', 'adicionar_paciente', 'remover_paciente', 'consultar_paciente', 'listar_paciente',
-    'buscar_ids'
+    'buscar_ids', 'agendamento_consulta'
 ]
 
 for fila in lista_filas:

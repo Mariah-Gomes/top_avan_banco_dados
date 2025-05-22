@@ -31,9 +31,9 @@ def consultar_id():
     dados = {'nome_medico': nome_medico, 'cpf': cpf}
     resposta = enviar_mensagem_aguardando("buscar_ids", dados)
 
-    if not resposta.get("resultado"):
-        print("❌ Erro:", resposta.get("mensagem"))
-        return None
+    #if not resposta.get("resultado"):
+     #   print("Erro:", resposta.get("mensagem"))
+      #  return None
 
     ids = resposta.get("mensagem")
 
@@ -54,18 +54,24 @@ def agendar():
 
     id_medico = ids.get("id_medico")
     id_paciente = ids.get("id_paciente")
-    if id_medico == None:
+
+    if id_medico is None:
         print("Médico não cadastrado no sistema")
         return
-    elif id_paciente == None:
+    if id_paciente is None:
         print("Paciente não cadastrado no sistema")
         return
-    elif id_paciente == None and id_medico == None:
-        print("Paciente e médicos não cadastrado no sistema")
+
+    # Aqui você pode chamar a função para consultar dias
+    resposta = enviar_mensagem_aguardando("agendamento_consulta", id_medico)
+
+    # Pega o conteúdo da mensagem (dias disponíveis)
+    diasMensagem = resposta.get("mensagem")
+
+    if not diasMensagem:
         return
-    
-    # Verifica disponibilidade com Cassandra
-    resposta_dias = enviar_mensagem_aguardando("dias_disponiveis", {"id_medico": id_medico})
+
+    print("Dias disponíveis do médico:", diasMensagem.get("dias_disponiveis"))
 
 
 
