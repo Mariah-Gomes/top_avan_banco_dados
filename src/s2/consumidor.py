@@ -3,6 +3,7 @@ import json
 from src.s2.rdb import verificar_dado_medico, inserir_dado_medico, remover_dado_medico, consultar_dado_medico, listar_dado_medico
 from src.s2.rdb import verificar_dado_paciente, inserir_dado_paciente, remover_dado_paciente, consultar_dado_paciente, listar_dado_paciente
 from src.s2.rdb import buscar_ids_paciente_medico
+from src.s2.rdb import adicionar_disponibilidade_medico, editar_disponibilidade_medico, buscar_id_medico
 from src.s2.cassandra import dias_disponiveis
 from src.s1.auditoria import salvar_mensagem, criar_tabela
 
@@ -27,6 +28,12 @@ def callback(ch, method, properties, body):
             sucesso, mensagem_retorno, mensagem_a = inserir_dado_medico(dados)
         elif fila == 'remover_medico':
             sucesso, mensagem_retorno, mensagem_a = remover_dado_medico(dados)
+        elif fila == 'adicionar_disponibilidade':
+            sucesso, mensagem_retorno, mensagem_a = adicionar_disponibilidade_medico(dados)
+        elif fila == 'editar_disponibilidade':
+            sucesso, mensagem_retorno, mensagem_a = editar_disponibilidade_medico(dados)
+        elif fila == 'buscar_idMedico':
+            sucesso, mensagem_retorno, mensagem_a = buscar_id_medico(dados)
         elif fila == 'consultar_medico':
             sucesso, mensagem_retorno, mensagem_a = consultar_dado_medico(dados)
         elif fila == 'listar_medicos':
@@ -86,7 +93,7 @@ canal = conexao.channel()
 lista_filas = [
     'verificar_medico', 'adicionar_medico', 'remover_medico', 'consultar_medico', 'listar_medicos',
     'verificar_paciente', 'adicionar_paciente', 'remover_paciente', 'consultar_paciente', 'listar_paciente',
-    'buscar_ids', 'agendamento_consulta'
+    'buscar_ids', 'agendamento_consulta', 'adicionar_disponibilidade', 'editar_disponibilidade', 'buscar_idMedico'
 ]
 
 for fila in lista_filas:
