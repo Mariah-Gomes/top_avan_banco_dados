@@ -1,5 +1,6 @@
 from src.s1.medico import adicionar_medico, remover_medico, consultar_medico, listar_medicos
 from src.s1.paciente import adicionar_paciente, remover_paciente, consultar_paciente, listar_pacientes
+from src.s1.medico import adicionar_disponibilidade, editar_disponibilidade
 
 def menu_dados():
     print("Menu Dados: ")
@@ -61,11 +62,11 @@ def editar(quem):
    if quem == "Médico":
         print("3.1. Adicionar Disponibilidade")
         print("3.2. Editar Disponibilidade")
-        opcaoDentro = int(input("Digite a opção: "))
+        opcaoDentro = input("Digite a opção: ")
         if opcaoDentro == '3.1':
-            print('adicionar')
+            adicionar_disponibilidade()
         elif opcaoDentro == '3.2':
-            print('editar')
+            editar_disponibilidade()
         else:
             print("Essa opção não se encontra")
    elif quem == "Paciente":

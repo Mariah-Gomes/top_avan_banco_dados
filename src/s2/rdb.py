@@ -254,3 +254,56 @@ def buscar_ids_paciente_medico(dados):
         mensagem = f"Erro ao verificar dados: {str(e)}"
         auditoria = mensagem
         return False, {"mensagem": mensagem, "id_medico": None, "id_paciente": None}, auditoria
+
+def buscar_id_medico(dados):
+    try:
+        consulta_response = supabase.table("medico").select("id, nome").eq("crm", dados).execute()
+        if consulta_response.data:
+            linha = consulta_response.data[0]    
+            id_medico = linha['id']
+            nome_medico = linha['nome']
+            mensagem = f"Nome: {nome_medico} possui o ID: {id_medico}"
+            retorno = {
+                'mensagem': mensagem,
+                'id_medico': id_medico,
+                'nome_medico': nome_medico
+            }
+            auditoria = f"Médico {nome_medico} consultado com sucesso"
+            return True, retorno, auditoria
+        else:
+            retorno = {
+                'mensagem': "Médico não encontrado",
+                'id_medico': None
+            }
+            auditoria = "Consulta ao CRM não retornou resultados"
+            return False, retorno, auditoria
+    except Exception as e:
+        retorno = {
+            'mensagem': f"Erro ao consultar dado no banco de dados: {str(e)}",
+            'id_medico': None
+        }
+        auditoria = retorno['mensagem']
+        return False, retorno, auditoria
+
+def adicionar_disponibilidade_medico(dados):
+    
+    try:
+        response = supabase.table("disponibilidade_fixa").insert(dados).execute()
+        if response.data:
+            retorno = f"Disponibilidade cadastrada com sucesso"
+            #print(mensagem)
+            auditoria = retorno
+            return True, retorno, auditoria
+        else:
+            retorno = f"Erro ao inserir: {response.error}"
+            #print(mensagem)
+            auditoria = retorno
+            return False, retorno, auditoria
+    except Exception as e:
+        retorno = f"Erro ao inserir dado no banco de dados: {str(e)}"
+        #print(mensagem)
+        auditoria = retorno
+        return False, retorno, auditoria
+    
+def editar_disponibilidade_medico(dados):
+    print()
