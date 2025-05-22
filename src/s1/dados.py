@@ -24,7 +24,7 @@ def menu_quem(quem):
     print("---------------")
     print("1. Cadastrar")
     print("2. Remover")
-    print("3. Editar")
+    print("3. Horários")
     print("4. Consultar")
     print("5. Listar")
     print("6. Sair")
@@ -35,8 +35,7 @@ def menu_quem(quem):
     elif opcao == 2:
         remover(quem)
     elif opcao == 3:
-        print('Editar')
-        #editar(quem)
+        editar(quem)
     elif opcao == 4:
         consultar(quem)
     elif opcao == 5:
@@ -58,11 +57,19 @@ def remover(quem):
     elif quem == "Paciente":
         remover_paciente()
         
-#def editar(quem):
-#    if quem == "Médico":
-#        print(f'Editar {quem}')
-#    elif quem == "Paciente":
-#        print(f'Editar {quem}')
+def editar(quem):
+   if quem == "Médico":
+        print("3.1. Adicionar Disponibilidade")
+        print("3.2. Editar Disponibilidade")
+        opcaoDentro = int(input("Digite a opção: "))
+        if opcaoDentro == '3.1':
+            print('adicionar')
+        elif opcaoDentro == '3.2':
+            print('editar')
+        else:
+            print("Essa opção não se encontra")
+   elif quem == "Paciente":
+        print("Essa opção só está disponível para médico")
         
 def consultar(quem):
     if quem == "Médico":
