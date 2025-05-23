@@ -1,4 +1,6 @@
 from src.s1.medico import adicionar_medico, remover_medico, consultar_medico, listar_medicos
+from src.s1.paciente import adicionar_paciente, remover_paciente, consultar_paciente, listar_pacientes
+from src.s1.medico import adicionar_disponibilidade, editar_disponibilidade
 
 def menu_dados():
     print("Menu Dados: ")
@@ -23,7 +25,7 @@ def menu_quem(quem):
     print("---------------")
     print("1. Cadastrar")
     print("2. Remover")
-    print("3. Editar")
+    print("3. Horários")
     print("4. Consultar")
     print("5. Listar")
     print("6. Sair")
@@ -34,8 +36,7 @@ def menu_quem(quem):
     elif opcao == 2:
         remover(quem)
     elif opcao == 3:
-        print('Editar')
-        #editar(quem)
+        editar(quem)
     elif opcao == 4:
         consultar(quem)
     elif opcao == 5:
@@ -49,28 +50,36 @@ def cadastrar(quem):
     if quem == "Médico":
         adicionar_medico()
     elif quem == "Paciente":
-        print(f'Cadastrar {quem}')
+        adicionar_paciente()
         
 def remover(quem):
     if quem == "Médico":
         remover_medico()
     elif quem == "Paciente":
-        print(f'Remover {quem}')
+        remover_paciente()
         
-#def editar(quem):
-#    if quem == "Médico":
-#        print(f'Editar {quem}')
-#    elif quem == "Paciente":
-#        print(f'Editar {quem}')
+def editar(quem):
+   if quem == "Médico":
+        print("3.1. Adicionar Disponibilidade")
+        print("3.2. Editar Disponibilidade")
+        opcaoDentro = input("Digite a opção: ")
+        if opcaoDentro == '3.1':
+            adicionar_disponibilidade()
+        elif opcaoDentro == '3.2':
+            editar_disponibilidade()
+        else:
+            print("Essa opção não se encontra")
+   elif quem == "Paciente":
+        print("Essa opção só está disponível para médico")
         
 def consultar(quem):
     if quem == "Médico":
         consultar_medico()
     elif quem == "Paciente":
-        print(f'Consultar {quem}')
+        consultar_paciente()
         
 def listar(quem):
     if quem == "Médico":
         listar_medicos()
     elif quem == "Paciente":
-        print(f'Listar {quem}')
+        listar_pacientes()
