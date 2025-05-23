@@ -1,25 +1,26 @@
-from src.s2.mongoConnection import get_mongo_db
+#colecao.insert_one({"nome": "Iago", "idade": 24})
 
-db = get_mongo_db()
+#for doc in colecao.find():
+#    print(doc)
+
+#usuario = colecao.find_one({"nome": "Iago"})
+#print(usuario)
+
+#colecao.update_one({"nome": "Iago"}, {"$set": {"idade": 25}})
+
+#colecao.delete_one({"nome": "Iago"})
+
+from src.s2.mongoConnection import get_mongo_client
+
+db = get_mongo_client()
 
 # Coleções
 laudo = db['laudo']
-prescricao = db['prescricao']
+exame = db['exame']
 
-# Inserir em laudo
-def inserir_exame(id_paciente, tipo_exame, data, resultado):
-    laudo.insert_one({
-        "id_paciente": id_paciente,
-        "tipo_exame": tipo_exame,
-        "data": data,
-        "resultado": resultado
-    })
+# Insere um dado
+laudo.insert_one({"nome": "Iago", "idade": 24})
 
-# Inserir em prescricao
-def inserir_prescricao(id_paciente, id_medico, data, prescricao_texto):
-    prescricao.insert_one({
-        "id_paciente": id_paciente,
-        "id_medico": id_medico,
-        "data": data,
-        "prescricao": prescricao_texto
-    })
+# Lê os dados
+for doc in laudo.find():
+    print(doc)
