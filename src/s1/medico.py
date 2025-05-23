@@ -78,9 +78,14 @@ def validar_dados_disponibilidade():
             print("O horário de início deve ser antes do horário de fim.\n")
             continue
 
-        # Se passou por todas as validações:
-        print("Dados validados com sucesso.\n")
-        return dia, hora_inicio, hora_fim
+        # Verificação de duplicidade
+        resultado = enviar_mensagem_aguardando('verificar_disponibilidade', dia)
+        if resultado['mensagem'] == 'Esse dia já está cadastrado':
+            print('Esse dia já está cadastrado.')
+            print('Se quiser alterar horários desse dia, selecione a opção "Editar Disponibilidade".')
+            return None
+        else:
+            return dia, hora_inicio, hora_fim
 
 def adicionar_disponibilidade():
     crm = input("Digite o CRM do médico: ")
@@ -88,17 +93,22 @@ def adicionar_disponibilidade():
     if not ja_cadastrado:
         print("Operação cancelada: não é possível adicionar a disponibilidade de um médico que não está no sistema.")
         return
-    
+
     print()
     print('------')
     print('[x] Resposta recebida... CRM Cadastrado, seguindo a operação')
     print('------')
     print()
-    
+
     id_medico = enviar_mensagem_aguardando('buscar_idMedico', crm)
     id_medico2 = id_medico['mensagem']['id_medico']
-    
-    dia_semana, hora_inicio, hora_fim = validar_dados_disponibilidade()
+
+    resultado_validacao = validar_dados_disponibilidade()
+    if resultado_validacao is None:
+        print("Operação cancelada.")
+        return
+
+    dia_semana, hora_inicio, hora_fim = resultado_validacao
 
     dados = {
         'id_medico': id_medico2,
@@ -107,7 +117,7 @@ def adicionar_disponibilidade():
         'hora_fim': hora_fim
     }
 
-    resultado = enviar_mensagem_aguardando('adicionar_disponibilidade', dados)  # Envia os dados para adicionar no backend
+    resultado = enviar_mensagem_aguardando('adicionar_disponibilidade', dados)
     print(resultado['mensagem'])
     
 def editar_disponibilidade():
