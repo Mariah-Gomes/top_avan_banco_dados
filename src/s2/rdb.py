@@ -285,6 +285,25 @@ def buscar_id_medico(dados):
         auditoria = retorno['mensagem']
         return False, retorno, auditoria
 
+def verificar_disponibilidade_medico(dados):
+    try:
+        verificacao = supabase.table("disponibilidade_fixa").select("dia_semana").eq("dia_semana", dados).execute()
+        if verificacao.data:
+            retorno = f"Esse dia já está cadastrado"
+            #print(mensagem)
+            auditoria = retorno
+            return True, retorno, auditoria
+        else:
+            retorno = f"Esse dia não está no sistema"
+            #print(mensagem)
+            auditoria = retorno
+            return False, retorno, auditoria
+    except Exception as e:
+        retorno = f"Erro ao inserir dado no banco de dados: {str(e)}"
+        #print(mensagem)
+        auditoria = retorno
+        return False, retorno, auditoria
+    
 def adicionar_disponibilidade_medico(dados):
     
     try:
