@@ -305,7 +305,6 @@ def verificar_disponibilidade_medico(dados):
         return False, retorno, auditoria
     
 def adicionar_disponibilidade_medico(dados):
-    
     try:
         response = supabase.table("disponibilidade_fixa").insert(dados).execute()
         if response.data:
@@ -324,5 +323,20 @@ def adicionar_disponibilidade_medico(dados):
         auditoria = retorno
         return False, retorno, auditoria
     
-def editar_disponibilidade_medico(dados):
-    print()
+def atualizar_disponibilidade_medico(dados):
+    try:
+        response = supabase.table("disponibilidade_fixa").update({"hora_inicio": dados["hora_inicio"],"hora_fim": dados["hora_fim"]}).eq("id_medico", dados["id_medico"]).eq("dia_semana", dados["dia_semana"]).execute()
+
+        if response.data:
+            retorno = "Disponibilidade atualizada com sucesso"
+            auditoria = retorno
+            return True, retorno, auditoria
+        else:
+            retorno = f"Erro ao atualizar: {response.error}"
+            auditoria = retorno
+            return False, retorno, auditoria
+
+    except Exception as e:
+        retorno = f"Erro ao atualizar dados no banco: {str(e)}"
+        auditoria = retorno
+        return False, retorno, auditoria
