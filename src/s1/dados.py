@@ -60,12 +60,12 @@ def remover(quem):
         
 def editar(quem):
    if quem == "Médico":
-        print("3.1. Adicionar Disponibilidade")
-        print("3.2. Editar Disponibilidade")
+        print("1. Adicionar Disponibilidade")
+        print("2. Editar Disponibilidade")
         opcaoDentro = input("Digite a opção: ")
-        if opcaoDentro == '3.1':
+        if opcaoDentro == '1':
             adicionar_disponibilidade()
-        elif opcaoDentro == '3.2':
+        elif opcaoDentro == '2':
             editar_disponibilidade()
         else:
             print("Essa opção não se encontra")
