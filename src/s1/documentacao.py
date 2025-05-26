@@ -1,7 +1,4 @@
-import tkinter as tk
-from tkinter import filedialog, messagebox
-import re
-import fitz  # PyMuPDF
+from src.utils import enviar_mensagem_aguardando
 
 def menu_documentacao():
     print("Menu Documentação: ")
@@ -14,11 +11,11 @@ def menu_documentacao():
     print("---------------")
     opcao = int(input("Digite uma opção -> "))
     if opcao == 1:
-        print("Documentar laudo")
+        documentar_laudo()
     elif opcao == 2:
         print("Buscar laudo")
     elif opcao == 3:
-        registrar_exame()
+        print("Registrar exame")
     elif opcao == 4:
         print("Buscar exame")
     elif opcao == 5:
@@ -27,31 +24,26 @@ def menu_documentacao():
         print("Opção inválida!")
     print()
 
-def registrar_exame():
-    exames = []
-
+def documentar_laudo():
     cpf = input("Digite o CPF do paciente: ")
-    data = input("Digite a data dos exames (formato: DD/MM/AAAA): ")
-    quant_exames = int(input("Digite quantos exames foram realizados: "))
-
-    for i in range(quant_exames):
-        print(f"\n--- Exame {i+1} ---")
-        tipo = input("Digite o tipo do exame: ")
-        resultado = input("Digite o resultado do exame: ")
-
-        exame = {
-            'tipo': tipo,
-            'resultado': resultado,
-        }
-        exames.append(exame)
-
-    # Prepara os dados finais
-    dados_para_envio = {
-        'cpf_paciente': cpf,
-        'exames': exames,
-        'data': data  # mesma data para todos
+    crm = input("Digite o CRM do médico: ")
+    dados = {
+        "cpf" : cpf,
+        "crm" : crm
     }
-
-    # Envia via mensageria
-    resposta = enviar_mensagem_aguardando('registrar_exames', dados_para_envio)
-    print(resposta['mensagem'])
+    resposta = enviar_mensagem_aguardando('buscar_ids', dados)
+    print(resposta.get("mensagem"))
+    if resposta["resultado"]:
+        ids = resposta.get("mensagem")
+        data = input("Digite a data do laudo (YYYY-MM-DD): ")
+        prescricao = input("Digite a prescrição: ")
+        documentar = {
+            "id_paciente" : ids.get("id_paciente"),
+            "id_medico" : ids.get("id_medico"),
+            "data" : data,
+            "prescricao" : prescricao
+        }
+        resposta_documentar = enviar_mensagem_aguardando("documentar_laudo", documentar)
+        print(resposta_documentar["mensagem"])
+    else:
+        return
