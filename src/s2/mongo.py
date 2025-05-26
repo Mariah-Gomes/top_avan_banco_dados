@@ -18,17 +18,21 @@ db = get_mongo_client()
 laudo = db['laudo']
 exame = db['exame']
 
-def cadastrar_laudo(id_paciente, id_medico, data, prescricao):
+def cadastrar_laudo(dados):
     resposta_laudo = laudo.insert_one({
-        "id_paciente" : id_paciente,
-        "id_medico" : id_medico,
-        "data" : data,
-        "prescricao" : prescricao
+        "id_paciente" : dados.get("id_paciente"),
+        "id_medico" : dados.get("id_medico"),
+        "data" : dados.get("data"),
+        "prescricao" : dados.get("prescricao")
     })
     if(resposta_laudo):
-        print("Laudo cadastrado!")
+        retorno = f"Laudo documentado com sucesso"
+        auditoria = retorno
+        return True, retorno, auditoria
     else:
-        print("Erro!")
+        retorno = f"Erro ao documentar laudo"
+        auditoria = retorno
+        return False, retorno, auditoria
     
 
 def cadastrar_exame(id_paciente, tipo_exame, data, resultado):
@@ -62,9 +66,3 @@ def consultar_exame(id_paciente, data):
         print(resposta_exame)
     else:
         print("Erro!")
-
-cadastrar_laudo(3, 3, "2025-05-23", "corno")
-cadastrar_exame(3, "corno", "2025-05-23", "yes")
-
-consultar_laudo(3, "2025-05-23")
-consultar_exame(3, "2025-05-23")
