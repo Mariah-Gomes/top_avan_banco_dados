@@ -4,8 +4,8 @@ from cassandra.query import dict_factory
 from datetime import datetime
 
 # Criar sessão e garantir que a tabela exista
-session = create_cassandra_session()
-create_table_agenda_medico(session)
+# session = create_cassandra_session()              COISA DE MARIAH!
+# create_table_agenda_medico(session)
 
 def dias_disponiveis(session, medico_id):
     try:

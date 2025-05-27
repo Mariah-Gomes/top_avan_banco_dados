@@ -293,10 +293,11 @@ def buscar_id_medico(dados):
 # Fiz do Paciente tbm Ass.: Seu Amor s2
 def buscar_id_paciente(dados):
     try:
-        consulta_resposta = supabase.table("paciente").select("id, nome").eq("cpf", dados).execute()
+        consulta_resposta = supabase.table("paciente").select("id, nome").eq("cpf", dados["cpf"]).execute()
         if consulta_resposta.data:
-            id_paciente = consulta_resposta.data[0]["id"]
-            nome_paciente = consulta_resposta.data[0]["id"]
+            linha = consulta_resposta.data[0]    
+            id_paciente = linha['id']
+            nome_paciente = linha['nome']
             mensagem = f"Nome: {nome_paciente} possui o ID: {id_paciente}"
             retorno = {
                 'mensagem': mensagem,

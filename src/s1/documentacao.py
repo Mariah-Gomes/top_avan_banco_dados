@@ -13,11 +13,11 @@ def menu_documentacao():
     if opcao == 1:
         documentar_laudo()
     elif opcao == 2:
-        print("Buscar laudo")
+        buscar_laudo()
     elif opcao == 3:
-        print("Registrar exame")
+        registrar_exame()
     elif opcao == 4:
-        print("Buscar exame")
+        buscar_exame()
     elif opcao == 5:
         print("Tchau!")
     else:
@@ -45,5 +45,66 @@ def documentar_laudo():
         }
         resposta_documentar = enviar_mensagem_aguardando("documentar_laudo", documentar)
         print(resposta_documentar["mensagem"])
+    else:
+        return
+    
+def buscar_laudo():
+    cpf = input("Digite o CPF do paciente: ")
+    dados = {
+        "cpf" : cpf,
+    }
+    resposta = enviar_mensagem_aguardando('buscar_idPaciente', dados)
+    print(resposta.get("mensagem"))
+    if resposta["resultado"]:
+        id = resposta.get("mensagem")
+        data = input("Digite a data do laudo (YYYY-MM-DD): ")
+        buscar = {
+            "id_paciente" : id.get("id_paciente"),
+            "data" : data,
+        }
+        resposta_busca = enviar_mensagem_aguardando("buscar_laudo", buscar)
+        print(resposta_busca["mensagem"])
+    else:
+        return
+
+def registrar_exame():
+    cpf = input("Digite o CPF do paciente: ")
+    dados = {
+        "cpf" : cpf
+    }
+    resposta = enviar_mensagem_aguardando('buscar_idPaciente', dados)
+    print(resposta.get("mensagem"))
+    if resposta["resultado"]:
+        id = resposta.get("mensagem")
+        tipo_exame = input("Digite o tipo de exame feito: ")
+        data = input("Digite a data do exame (YYYY-MM-DD): ")
+        resultado = input("Digite o resultado: ")
+        registrar = {
+            "id_paciente" : id.get("id_paciente"),
+            "tipo_exame" : tipo_exame,
+            "data" : data,
+            "resultado" : resultado
+        }
+        resposta_registrar = enviar_mensagem_aguardando("registrar_exame", registrar)
+        print(resposta_registrar["mensagem"])
+    else:
+        return
+    
+def buscar_exame():
+    cpf = input("Digite o CPF do paciente: ")
+    dados = {
+        "cpf" : cpf,
+    }
+    resposta = enviar_mensagem_aguardando('buscar_idPaciente', dados)
+    print(resposta.get("mensagem"))
+    if resposta["resultado"]:
+        id = resposta.get("mensagem")
+        data = input("Digite a data do exame (YYYY-MM-DD): ")
+        buscar = {
+            "id_paciente" : id.get("id_paciente"),
+            "data" : data,
+        }
+        resposta_busca = enviar_mensagem_aguardando("buscar_exame", buscar)
+        print(resposta_busca["mensagem"])
     else:
         return

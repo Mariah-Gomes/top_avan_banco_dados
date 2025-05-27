@@ -59,6 +59,12 @@ def callback(ch, method, properties, body):
             sucesso, mensagem_retorno, mensagem_a = dias_disponiveis(dados)
         elif fila == 'documentar_laudo':
             sucesso, mensagem_retorno, mensagem_a = cadastrar_laudo(dados)
+        elif fila == 'buscar_laudo':
+            sucesso, mensagem_retorno, mensagem_a = consultar_laudo(dados)
+        elif fila == 'registrar_exame':
+            sucesso, mensagem_retorno, mensagem_a = cadastrar_exame(dados)
+        elif fila == 'buscar_exame':
+            sucesso, mensagem_retorno, mensagem_a = consultar_exame(dados)
         else:
             print("Operação desconhecida", flush=True)
             sucesso = False
@@ -99,7 +105,7 @@ lista_filas = [
     'verificar_medico', 'adicionar_medico', 'remover_medico', 'consultar_medico', 'listar_medicos',
     'verificar_paciente', 'adicionar_paciente', 'remover_paciente', 'consultar_paciente', 'listar_paciente',
     'buscar_ids', 'agendamento_consulta', 'adicionar_disponibilidade', 'editar_disponibilidade', 'buscar_idMedico',
-    'buscar_idPaciente', 'documentar_laudo'
+    'buscar_idPaciente', 'documentar_laudo', 'registrar_exame', 'buscar_laudo', 'buscar_exame'
 ]
 
 for fila in lista_filas:
