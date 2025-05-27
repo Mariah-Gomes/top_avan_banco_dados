@@ -184,3 +184,29 @@ Especialização: Sla
 110,verificar_medico,Ação 'verificar_medico' executada. Resultado: Não existe no sistema com o CRM: 82,SUCESSO,2025-05-25 23:01:39
 111,adicionar_medico,Ação 'adicionar_medico' executada. Resultado: Médico bilubilu cadastrado com sucesso,SUCESSO,2025-05-25 23:02:06
 112,buscar_ids,"Ação 'buscar_ids' executada. Resultado: Buscado: Médico cadastrado, Paciente cadastrado",SUCESSO,2025-05-25 23:08:01
+113,buscar_ids,"Ação 'buscar_ids' executada. Resultado: Buscado: Médico cadastrado, Paciente cadastrado",SUCESSO,2025-05-25 23:12:38
+114,buscar_ids,"Ação 'buscar_ids' executada. Resultado: Buscado: Médico cadastrado, Paciente cadastrado",SUCESSO,2025-05-25 23:17:27
+115,buscar_ids,"Ação 'buscar_ids' executada. Resultado: Buscado: Médico cadastrado, Paciente cadastrado",SUCESSO,2025-05-25 23:23:48
+116,documentar_laudo,Ação 'documentar_laudo' executada. Resultado: Laudo documentado com sucesso,SUCESSO,2025-05-25 23:23:59
+117,buscar_ids,"Ação 'buscar_ids' executada. Resultado: Buscado: Médico cadastrado, Paciente cadastrado",SUCESSO,2025-05-25 23:26:40
+118,buscar_ids,"Ação 'buscar_ids' executada. Resultado: Buscado: Médico cadastrado, Paciente cadastrado",SUCESSO,2025-05-25 23:28:59
+119,buscar_ids,"Ação 'buscar_ids' executada. Resultado: Buscado: Médico cadastrado, Paciente cadastrado",SUCESSO,2025-05-25 23:33:13
+120,documentar_laudo,Ação 'documentar_laudo' executada. Resultado: Laudo documentado com sucesso,SUCESSO,2025-05-25 23:33:25
+121,buscar_ids,"Ação 'buscar_ids' executada. Resultado: Buscado: Médico cadastrado, Paciente cadastrado",SUCESSO,2025-05-27 19:58:16
+122,documentar_laudo,Ação 'documentar_laudo' executada. Resultado: Laudo documentado com sucesso,SUCESSO,2025-05-27 19:58:43
+123,buscar_ids,"Ação 'buscar_ids' executada. Resultado: Médico não cadastrado, Paciente cadastrado",ERRO,2025-05-27 20:18:26
+124,buscar_idPaciente,Ação 'buscar_idPaciente' executada. Resultado: Consulta ao CPF não retornou resultados,ERRO,2025-05-27 20:20:57
+125,buscar_idPaciente,Ação 'buscar_idPaciente' executada. Resultado: Consulta ao CPF não retornou resultados,ERRO,2025-05-27 20:22:03
+126,buscar_idPaciente,Ação 'buscar_idPaciente' executada. Resultado: Consulta ao CPF não retornou resultados,ERRO,2025-05-27 20:25:12
+127,buscar_idPaciente,Ação 'buscar_idPaciente' executada. Resultado: Paciente Bidu consultado com sucesso,SUCESSO,2025-05-27 20:27:02
+128,registrar_exame,Ação 'registrar_exame' executada. Resultado: Exame registrado com sucesso,SUCESSO,2025-05-27 20:27:29
+129,buscar_idPaciente,Ação 'buscar_idPaciente' executada. Resultado: Paciente Bidu consultado com sucesso,SUCESSO,2025-05-27 20:39:44
+130,buscar_laudo,Ação 'buscar_laudo' executada. Resultado: Laudo consultado com sucesso,SUCESSO,2025-05-27 20:40:07
+131,buscar_idPaciente,Ação 'buscar_idPaciente' executada. Resultado: Paciente Bidu consultado com sucesso,SUCESSO,2025-05-27 20:41:43
+132,buscar_laudo,Ação 'buscar_laudo' executada. Resultado: Laudo consultado com sucesso,SUCESSO,2025-05-27 20:41:49
+133,buscar_idPaciente,Ação 'buscar_idPaciente' executada. Resultado: Paciente Bidu consultado com sucesso,SUCESSO,2025-05-27 20:43:51
+134,buscar_laudo,Ação 'buscar_laudo' executada. Resultado: Laudo consultado com sucesso,SUCESSO,2025-05-27 20:44:00
+135,buscar_idPaciente,Ação 'buscar_idPaciente' executada. Resultado: Paciente Bidu consultado com sucesso,SUCESSO,2025-05-27 20:47:02
+136,buscar_laudo,Ação 'buscar_laudo' executada. Resultado: Laudo consultado com sucesso,SUCESSO,2025-05-27 20:47:07
+137,buscar_idPaciente,Ação 'buscar_idPaciente' executada. Resultado: Paciente Bidu consultado com sucesso,SUCESSO,2025-05-27 20:51:17
+138,buscar_laudo,Ação 'buscar_laudo' executada. Resultado: Laudo consultado com sucesso,SUCESSO,2025-05-27 20:51:22

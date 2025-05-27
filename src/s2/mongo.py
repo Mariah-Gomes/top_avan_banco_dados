@@ -35,34 +35,56 @@ def cadastrar_laudo(dados):
         return False, retorno, auditoria
     
 
-def cadastrar_exame(id_paciente, tipo_exame, data, resultado):
+def cadastrar_exame(dados):
     resposta_exame = exame.insert_one({
-        "id_paciente" : id_paciente,
-        "tipo_exame" : tipo_exame,
-        "data" : data,
-        "resultado" : resultado
+        "id_paciente" : dados.get("id_paciente"),
+        "tipo_exame" : dados.get("tipo_exame"),
+        "data" : dados.get("data"),
+        "resultado" : dados.get("resultado")
     })
     if(resposta_exame):
-        print("Exame cadastrado!")
+        retorno = f"Exame registrado com sucesso"
+        auditoria = retorno
+        return True, retorno, auditoria
     else:
-        print("Erro!")
+        retorno = f"Erro ao registrar exame"
+        auditoria = retorno
+        return False, retorno, auditoria
     
-def consultar_laudo(id_paciente, data):
+def consultar_laudo(dados):
     resposta_laudo = laudo.find_one({
-        "id_paciente" : id_paciente,
-        "data" : data
+        "id_paciente" : dados.get("id_paciente"),
+        "data" : dados.get("data")
     })
     if(resposta_laudo):
-        print(resposta_laudo)
+        retorno = {
+            'id_paciente' : resposta_laudo['id_paciente'],
+            'id_medico' : resposta_laudo['id_medico'],
+            'data' : resposta_laudo['data'],
+            'prescricao' : resposta_laudo['prescricao']
+        }
+        auditoria = f"Laudo consultado com sucesso"
+        return True, retorno, auditoria
     else:
-        print("Erro!")
+        retorno = f"Erro ao consultar laudo"
+        auditoria = retorno
+        return False, retorno, auditoria
 
-def consultar_exame(id_paciente, data):
+def consultar_exame(dados):
     resposta_exame = exame.find_one({
-        "id_paciente" : id_paciente,
-        "data" : data
+        "id_paciente" : dados.get("id_paciente"),
+        "data" : dados.get("data")
     })
     if(resposta_exame):
-        print(resposta_exame)
+        retorno = retorno = {
+            'id_paciente' : resposta_exame['id_paciente'],
+            'tipo_exame' : resposta_exame['tipo_exame'],
+            'data' : resposta_exame['data'],
+            'resultado' : resposta_exame['resultado']
+        }
+        auditoria = f"Exame consultado com sucesso"
+        return True, retorno, auditoria
     else:
-        print("Erro!")
+        retorno = f"Erro ao consultar exame"
+        auditoria = retorno
+        return False, retorno, auditoria
