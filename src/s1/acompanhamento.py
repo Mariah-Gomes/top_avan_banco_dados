@@ -8,7 +8,6 @@ def acompanhamento():
         "cpf" : cpf,
     }
     resposta = enviar_mensagem_aguardando('buscar_idPaciente', dados)
-    print(resposta.get("mensagem"))
     if resposta["resultado"]:
         id = resposta.get("mensagem")
         tipo_exame = input("Digite o tipo de exame: ")
@@ -17,7 +16,6 @@ def acompanhamento():
             "tipo_exame" : tipo_exame
         }
         resposta_busca = enviar_mensagem_aguardando("acompanhamento", buscar)
-        print(resposta_busca["mensagem"])
 
         exames = resposta_busca["mensagem"]
 
