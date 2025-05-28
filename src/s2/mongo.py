@@ -76,7 +76,7 @@ def consultar_exame(dados):
         "data" : dados.get("data")
     })
     if(resposta_exame):
-        retorno = retorno = {
+        retorno = {
             'id_paciente' : resposta_exame['id_paciente'],
             'tipo_exame' : resposta_exame['tipo_exame'],
             'data' : resposta_exame['data'],
@@ -89,3 +89,20 @@ def consultar_exame(dados):
         retorno = f"Erro ao consultar exame"
         auditoria = retorno
         return False, retorno, auditoria
+    
+def acompanhamento(dados):
+    retorno = {}
+    for doc in exame.find({"id_paciente" : dados.get("id_paciente"), "tipo_exame" : dados.get("tipo_exame")}):
+        dados_exame = {
+            'id_paciente' : doc['id_paciente'],
+            'tipo_exame' : doc['tipo_exame'],
+            'resultado' : doc['resultado'],
+            'percentual_aceitacao' : doc['percentual_aceitacao']
+        }
+        retorno[doc['data']] = dados_exame
+    if not retorno:
+        retorno_erro = f"Erro ao consultar exames"
+        auditoria = retorno_erro
+        return False, retorno_erro, auditoria
+    auditoria = f"Exames consultados com sucesso"
+    return True, retorno, auditoria
