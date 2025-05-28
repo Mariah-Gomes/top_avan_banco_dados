@@ -1,4 +1,5 @@
 from src.utils import enviar_mensagem_aguardando  # Importa a função de envio de mensagem do módulo produtor
+from datetime import datetime
 
 def menu_consulta():
     print("Menu Consulta: ")
@@ -45,7 +46,6 @@ def consultar_id():
 
 #def verificao_disponibilidade():
  #   resultado = enviar_mensagem_aguardando('verificar_disponibilidade', crm)  # Envia o CRM para verificar no backend
-
 
 def agendar():
     ids = consultar_id()

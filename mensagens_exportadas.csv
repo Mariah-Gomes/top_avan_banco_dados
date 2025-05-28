@@ -126,3 +126,74 @@ Especialização: Sla
 52,adicionar_medico,"Ação 'adicionar_medico' executada. Resultado: Erro ao inserir dado no banco de dados: {'code': '23505', 'details': 'Key (crm)=(666) already exists.', 'hint': None, 'message': 'duplicate key value violates unique constraint ""medico_crm_key""'}",ERRO,2025-05-21 15:46:49
 53,verificar_paciente,Ação 'verificar_paciente' executada. Resultado: Não existe no sistema com o CPF: 149,SUCESSO,2025-05-21 16:07:46
 54,adicionar_paciente,Ação 'adicionar_paciente' executada. Resultado: Paciente Ivanise cadastrado com sucesso,SUCESSO,2025-05-21 16:07:58
+55,buscar_ids,"Ação 'buscar_ids' executada. Resultado: Buscado: Médico=Soraya, Paciente=Marcos, CPF=148",SUCESSO,2025-05-21 17:55:38
+56,buscar_ids,"Ação 'buscar_ids' executada. Resultado: Buscado: Médico=Aaaaaa, Paciente=Marcos, CPF=148",SUCESSO,2025-05-21 18:45:35
+57,buscar_ids,"Ação 'buscar_ids' executada. Resultado: Médico cadastrado, Paciente não cadastrado",SUCESSO,2025-05-21 19:17:44
+58,buscar_ids,"Ação 'buscar_ids' executada. Resultado: Buscado: Médico cadastrado, Paciente cadastrado",SUCESSO,2025-05-21 19:28:07
+59,buscar_ids,Ação 'buscar_ids' executada. Resultado: Ambos não são cadastrados no sistema,ERRO,2025-05-21 19:28:27
+60,buscar_ids,"Ação 'buscar_ids' executada. Resultado: Médico cadastrado, Paciente não cadastrado",SUCESSO,2025-05-21 19:29:31
+61,buscar_ids,"Ação 'buscar_ids' executada. Resultado: Médico cadastrado, Paciente não cadastrado",ERRO,2025-05-21 20:12:42
+62,buscar_ids,"Ação 'buscar_ids' executada. Resultado: Médico cadastrado, Paciente não cadastrado",ERRO,2025-05-21 20:23:44
+63,buscar_ids,"Ação 'buscar_ids' executada. Resultado: Buscado: Médico cadastrado, Paciente cadastrado",SUCESSO,2025-05-21 20:24:03
+64,verificar_medico,Ação 'verificar_medico' executada. Resultado: Medico: Lalala (CRM: 12) existe no sistema,SUCESSO,2025-05-21 22:00:32
+65,adicionar_disponibilidade,"Ação 'adicionar_disponibilidade' executada. Resultado: Erro ao inserir dado no banco de dados: {'code': 'PGRST204', 'details': None, 'hint': None, 'message': ""Could not find the 'dias' column of 'disponibilidade_fixa' in the schema cache""}",ERRO,2025-05-21 22:00:45
+66,verificar_medico,Ação 'verificar_medico' executada. Resultado: Medico: Lalala (CRM: 12) existe no sistema,SUCESSO,2025-05-21 22:12:04
+67,adicionar_disponibilidade,"Ação 'adicionar_disponibilidade' executada. Resultado: Erro ao inserir dado no banco de dados: {'code': 'PGRST204', 'details': None, 'hint': None, 'message': ""Could not find the 'dias' column of 'disponibilidade_fixa' in the schema cache""}",ERRO,2025-05-21 22:12:16
+68,verificar_medico,Ação 'verificar_medico' executada. Resultado: Medico: Lalala (CRM: 12) existe no sistema,SUCESSO,2025-05-21 22:17:37
+69,adicionar_disponibilidade,"Ação 'adicionar_disponibilidade' executada. Resultado: Erro ao inserir dado no banco de dados: {'code': 'PGRST204', 'details': None, 'hint': None, 'message': ""Could not find the 'dias' column of 'disponibilidade_fixa' in the schema cache""}",ERRO,2025-05-21 22:17:46
+70,verificar_medico,Ação 'verificar_medico' executada. Resultado: Medico: Lalala (CRM: 12) existe no sistema,SUCESSO,2025-05-21 22:20:25
+71,buscar_ids,Ação 'buscar_ids' executada. Resultado: Erro ao verificar dados: 'str' object has no attribute 'get',ERRO,2025-05-21 22:20:25
+72,adicionar_disponibilidade,"Ação 'adicionar_disponibilidade' executada. Resultado: Erro ao inserir dado no banco de dados: {'code': '22P02', 'details': None, 'hint': None, 'message': 'invalid input syntax for type integer: ""{""resultado"": false, ""mensagem"": {""mensagem"": ""Erro ao verificar dados: \'str\' object has no attribute \'get\'"", ""id_medico"": null, ""id_paciente"": null}}""'}",ERRO,2025-05-21 22:20:36
+73,verificar_medico,Ação 'verificar_medico' executada. Resultado: Medico: Lalala (CRM: 12) existe no sistema,SUCESSO,2025-05-21 22:23:49
+74,buscar_ids,Ação 'buscar_ids' executada. Resultado: Erro ao verificar dados: 'str' object has no attribute 'get',ERRO,2025-05-21 22:23:49
+75,verificar_medico,Ação 'verificar_medico' executada. Resultado: Medico: Lalala (CRM: 12) existe no sistema,SUCESSO,2025-05-21 22:25:09
+76,buscar_ids,Ação 'buscar_ids' executada. Resultado: Erro ao verificar dados: 'str' object has no attribute 'get',ERRO,2025-05-21 22:25:09
+77,adicionar_disponibilidade,"Ação 'adicionar_disponibilidade' executada. Resultado: Erro ao inserir dado no banco de dados: {'code': '22P02', 'details': None, 'hint': None, 'message': 'invalid input syntax for type integer: ""{""resultado"": false, ""mensagem"": {""mensagem"": ""Erro ao verificar dados: \'str\' object has no attribute \'get\'"", ""id_medico"": null, ""id_paciente"": null}}""'}",ERRO,2025-05-21 22:25:19
+78,verificar_medico,Ação 'verificar_medico' executada. Resultado: Medico: Lalala (CRM: 12) existe no sistema,SUCESSO,2025-05-21 22:28:05
+79,buscar_ids,Ação 'buscar_ids' executada. Resultado: Ambos não são cadastrados no sistema,ERRO,2025-05-21 22:28:05
+80,adicionar_disponibilidade,"Ação 'adicionar_disponibilidade' executada. Resultado: Erro ao inserir dado no banco de dados: {'code': '22P02', 'details': None, 'hint': None, 'message': 'invalid input syntax for type integer: ""{""resultado"": false, ""mensagem"": {""mensagem"": ""Ambos n\\u00e3o s\\u00e3o cadastrados no sistema"", ""id_medico"": null, ""id_paciente"": null}}""'}",ERRO,2025-05-21 22:28:16
+81,verificar_medico,Ação 'verificar_medico' executada. Resultado: Medico: Lalala (CRM: 12) existe no sistema,SUCESSO,2025-05-21 22:41:55
+82,verificar_medico,Ação 'verificar_medico' executada. Resultado: Medico: Lalala (CRM: 12) existe no sistema,SUCESSO,2025-05-21 22:43:18
+83,verificar_medico,Ação 'verificar_medico' executada. Resultado: Medico: Lalala (CRM: 12) existe no sistema,SUCESSO,2025-05-21 22:45:32
+84,buscar_idMedico,Ação 'buscar_idMedico' executada. Resultado: Médico Lalala consultado com sucesso,SUCESSO,2025-05-21 22:48:23
+85,buscar_idMedico,Ação 'buscar_idMedico' executada. Resultado: Médico Lalala consultado com sucesso,SUCESSO,2025-05-21 22:48:23
+86,buscar_idMedico,Ação 'buscar_idMedico' executada. Resultado: Médico Lalala consultado com sucesso,SUCESSO,2025-05-21 22:48:23
+87,verificar_medico,Ação 'verificar_medico' executada. Resultado: Medico: Lalala (CRM: 12) existe no sistema,SUCESSO,2025-05-21 22:49:13
+88,buscar_idMedico,Ação 'buscar_idMedico' executada. Resultado: Médico Lalala consultado com sucesso,SUCESSO,2025-05-21 22:49:13
+89,adicionar_disponibilidade,Ação 'adicionar_disponibilidade' executada. Resultado: Disponibilidade cadastrada com sucesso,SUCESSO,2025-05-21 22:49:24
+90,verificar_medico,Ação 'verificar_medico' executada. Resultado: Medico: Lalala (CRM: 12) existe no sistema,SUCESSO,2025-05-21 22:55:39
+91,buscar_idMedico,Ação 'buscar_idMedico' executada. Resultado: Médico Lalala consultado com sucesso,SUCESSO,2025-05-21 22:55:39
+92,adicionar_disponibilidade,Ação 'adicionar_disponibilidade' executada. Resultado: Disponibilidade cadastrada com sucesso,SUCESSO,2025-05-21 22:56:23
+93,verificar_medico,Ação 'verificar_medico' executada. Resultado: Medico: Lalala (CRM: 12) existe no sistema,SUCESSO,2025-05-21 22:57:59
+94,verificar_medico,Ação 'verificar_medico' executada. Resultado: Medico: Lalala (CRM: 12) existe no sistema,SUCESSO,2025-05-21 22:58:12
+95,buscar_idMedico,Ação 'buscar_idMedico' executada. Resultado: Médico Lalala consultado com sucesso,SUCESSO,2025-05-21 22:58:12
+96,adicionar_disponibilidade,Ação 'adicionar_disponibilidade' executada. Resultado: Disponibilidade cadastrada com sucesso,SUCESSO,2025-05-21 22:59:14
+97,verificar_medico,Ação 'verificar_medico' executada. Resultado: Medico: Lalala (CRM: 12) existe no sistema,SUCESSO,2025-05-23 18:39:39
+98,buscar_idMedico,Ação 'buscar_idMedico' executada. Resultado: Médico Lalala consultado com sucesso,SUCESSO,2025-05-23 18:39:40
+99,verificar_disponibilidade,"Ação 'verificar_disponibilidade' executada. Resultado: Erro ao inserir dado no banco de dados: {'code': '42703', 'details': None, 'hint': None, 'message': 'column disponibilidade_fixa.dia does not exist'}",ERRO,2025-05-23 18:40:04
+100,adicionar_disponibilidade,Ação 'adicionar_disponibilidade' executada. Resultado: Disponibilidade cadastrada com sucesso,SUCESSO,2025-05-23 18:40:04
+101,verificar_medico,Ação 'verificar_medico' executada. Resultado: Medico: Lalala (CRM: 12) existe no sistema,SUCESSO,2025-05-23 18:46:17
+102,buscar_idMedico,Ação 'buscar_idMedico' executada. Resultado: Médico Lalala consultado com sucesso,SUCESSO,2025-05-23 18:46:17
+103,verificar_disponibilidade,"Ação 'verificar_disponibilidade' executada. Resultado: Erro ao inserir dado no banco de dados: {'code': '42703', 'details': None, 'hint': None, 'message': 'column disponibilidade_fixa.dia does not exist'}",ERRO,2025-05-23 18:46:27
+104,adicionar_disponibilidade,Ação 'adicionar_disponibilidade' executada. Resultado: Disponibilidade cadastrada com sucesso,SUCESSO,2025-05-23 18:46:27
+105,verificar_medico,Ação 'verificar_medico' executada. Resultado: Medico: Lalala (CRM: 12) existe no sistema,SUCESSO,2025-05-23 18:49:46
+106,buscar_idMedico,Ação 'buscar_idMedico' executada. Resultado: Médico Lalala consultado com sucesso,SUCESSO,2025-05-23 18:49:46
+107,verificar_disponibilidade,Ação 'verificar_disponibilidade' executada. Resultado: Esse dia já está cadastrado,SUCESSO,2025-05-23 18:49:57
+108,verificar_medico,Ação 'verificar_medico' executada. Resultado: Medico: Lalala (CRM: 12) existe no sistema,SUCESSO,2025-05-23 19:06:14
+109,buscar_idMedico,Ação 'buscar_idMedico' executada. Resultado: Médico Lalala consultado com sucesso,SUCESSO,2025-05-23 19:06:14
+110,verificar_disponibilidade,Ação 'verificar_disponibilidade' executada. Resultado: Esse dia não está no sistema,ERRO,2025-05-23 19:06:35
+111,verificar_medico,Ação 'verificar_medico' executada. Resultado: Medico: Lalala (CRM: 12) existe no sistema,SUCESSO,2025-05-23 19:06:49
+112,buscar_idMedico,Ação 'buscar_idMedico' executada. Resultado: Médico Lalala consultado com sucesso,SUCESSO,2025-05-23 19:06:49
+113,verificar_disponibilidade,Ação 'verificar_disponibilidade' executada. Resultado: Esse dia já está cadastrado,SUCESSO,2025-05-23 19:07:10
+114,verificar_medico,Ação 'verificar_medico' executada. Resultado: Medico: Lalala (CRM: 12) existe no sistema,SUCESSO,2025-05-23 19:08:31
+115,buscar_idMedico,Ação 'buscar_idMedico' executada. Resultado: Médico Lalala consultado com sucesso,SUCESSO,2025-05-23 19:08:32
+116,verificar_disponibilidade,Ação 'verificar_disponibilidade' executada. Resultado: Esse dia já está cadastrado,SUCESSO,2025-05-23 19:08:42
+117,verificar_medico,Ação 'verificar_medico' executada. Resultado: Medico: Lalala (CRM: 12) existe no sistema,SUCESSO,2025-05-23 19:10:54
+118,buscar_idMedico,Ação 'buscar_idMedico' executada. Resultado: Médico Lalala consultado com sucesso,SUCESSO,2025-05-23 19:10:54
+119,verificar_disponibilidade,Ação 'verificar_disponibilidade' executada. Resultado: Esse dia não está no sistema,ERRO,2025-05-23 19:11:02
+120,verificar_medico,Ação 'verificar_medico' executada. Resultado: Não existe no sistema com o CRM: 06,SUCESSO,2025-05-23 20:32:31
+121,adicionar_medico,Ação 'adicionar_medico' executada. Resultado: Médico Leonardo cadastrado com sucesso,SUCESSO,2025-05-23 20:32:44
+122,verificar_medico,Ação 'verificar_medico' executada. Resultado: Medico: Leonardo (CRM: 06) existe no sistema,SUCESSO,2025-05-23 20:33:49
+123,buscar_idMedico,Ação 'buscar_idMedico' executada. Resultado: Médico Leonardo consultado com sucesso,SUCESSO,2025-05-23 20:33:49
+124,verificar_disponibilidade,Ação 'verificar_disponibilidade' executada. Resultado: Esse dia já está cadastrado,SUCESSO,2025-05-23 20:34:13
+125,adicionar_disponibilidade,Ação 'adicionar_disponibilidade' executada. Resultado: Disponibilidade cadastrada com sucesso,SUCESSO,2025-05-23 20:34:13

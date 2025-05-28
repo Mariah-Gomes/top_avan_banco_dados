@@ -28,11 +28,11 @@ def enviar_mensagem_aguardando(nome_funcao, dados):
 
     print('\n[*] Aguardando resposta do consumidor...')
 
-    # ✅ Espera até que a resposta seja recebida
+    # Espera até que a resposta seja recebida
     while not resposta['received']:
         conexao.process_data_events(time_limit=0.5)
 
-    # ✅ Só fecha depois de garantir o recebimento
+    # Só fecha depois de garantir o recebimento
     try:
         canal.queue_delete(queue=callback_queue)
     except Exception as e:
