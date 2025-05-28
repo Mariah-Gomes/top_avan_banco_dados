@@ -6,7 +6,7 @@ from src.s2.rdb import buscar_ids_paciente_medico, buscar_id_paciente
 from src.s2.rdb import adicionar_disponibilidade_medico, editar_disponibilidade_medico, buscar_id_medico
 from src.s2.cassandra import dias_disponiveis
 from src.s1.auditoria import salvar_mensagem, criar_tabela
-from src.s2.mongo import cadastrar_laudo, cadastrar_exame, consultar_laudo, consultar_exame
+from src.s2.mongo import cadastrar_laudo, cadastrar_exame, consultar_laudo, consultar_exame, acompanhamento
 
 def salvar_resultado_operacao(fila, sucesso, mensagem_resultado):
     status_str = "SUCESSO" if sucesso else "ERRO"
@@ -65,6 +65,8 @@ def callback(ch, method, properties, body):
             sucesso, mensagem_retorno, mensagem_a = cadastrar_exame(dados)
         elif fila == 'buscar_exame':
             sucesso, mensagem_retorno, mensagem_a = consultar_exame(dados)
+        elif fila == 'acompanhamento':
+            sucesso, mensagem_retorno, mensagem_a = acompanhamento(dados)
         else:
             print("Operação desconhecida", flush=True)
             sucesso = False
@@ -105,7 +107,7 @@ lista_filas = [
     'verificar_medico', 'adicionar_medico', 'remover_medico', 'consultar_medico', 'listar_medicos',
     'verificar_paciente', 'adicionar_paciente', 'remover_paciente', 'consultar_paciente', 'listar_paciente',
     'buscar_ids', 'agendamento_consulta', 'adicionar_disponibilidade', 'editar_disponibilidade', 'buscar_idMedico',
-    'buscar_idPaciente', 'documentar_laudo', 'registrar_exame', 'buscar_laudo', 'buscar_exame'
+    'buscar_idPaciente', 'documentar_laudo', 'registrar_exame', 'buscar_laudo', 'buscar_exame', 'acompanhamento'
 ]
 
 for fila in lista_filas:
