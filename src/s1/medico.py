@@ -80,12 +80,15 @@ def validar_dados_disponibilidade():
 
         # Verificação de duplicidade
         resultado = enviar_mensagem_aguardando('verificar_disponibilidade', dia)
-        #if resultado['mensagem'] == 'Esse dia já está cadastrado':
-            #print('Esse dia já está cadastrado.')
-            #print('Se quiser alterar horários desse dia, selecione a opção "Editar Disponibilidade".')
-         #   return None, dia, hora_inicio, hora_fim
-        #else:
-        return dia, hora_inicio, hora_fim
+        chave = resultado['mensagem']['chave']
+        mensagem = resultado['mensagem']['mensagem']
+        print(chave)
+        if chave == '1':
+            print(mensagem)
+            print('Se quiser alterar horários desse dia, selecione a opção "Editar Disponibilidade".')
+            return chave, dia, hora_inicio, hora_fim
+        else:
+            return chave, dia, hora_inicio, hora_fim
 
 def adicionar_disponibilidade():
     crm = input("Digite o CRM do médico: ")
@@ -103,14 +106,12 @@ def adicionar_disponibilidade():
     id_medico = enviar_mensagem_aguardando('buscar_idMedico', crm)
     id_medico2 = id_medico['mensagem']['id_medico']
 
-    resultado_validacao = validar_dados_disponibilidade()
-    if resultado_validacao is None:
+    chave, dia_semana, hora_inicio, hora_fim = validar_dados_disponibilidade()
+    if chave == 1:
         print("Operação cancelada.")
         print('Esse dia já está cadastrado.')
         print('Se quiser alterar horários desse dia, selecione a opção "Editar Disponibilidade".')
         return
-
-    dia_semana, hora_inicio, hora_fim = resultado_validacao
 
     dados = {
         'id_medico': id_medico2,
@@ -138,14 +139,12 @@ def editar_disponibilidade():
     id_medico = enviar_mensagem_aguardando('buscar_idMedico', crm)
     id_medico2 = id_medico['mensagem']['id_medico']
 
-    resultado_validacao = validar_dados_disponibilidade()
-    if resultado_validacao is not None:
+    chave, dia_semana, hora_inicio, hora_fim = validar_dados_disponibilidade()
+    if chave == '0':
         print("Operação cancelada.")
         print('Esse dia não está cadastrado.')
         print('Se quiser adicionar horários desse dia, selecione a opção "Adicionar Disponibilidade".')
         return
-
-    dia_semana, hora_inicio, hora_fim = resultado_validacao
 
     dados = {
         'id_medico': id_medico2,
