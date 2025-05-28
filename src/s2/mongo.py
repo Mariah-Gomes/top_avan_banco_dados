@@ -34,13 +34,13 @@ def cadastrar_laudo(dados):
         auditoria = retorno
         return False, retorno, auditoria
     
-
 def cadastrar_exame(dados):
     resposta_exame = exame.insert_one({
         "id_paciente" : dados.get("id_paciente"),
         "tipo_exame" : dados.get("tipo_exame"),
         "data" : dados.get("data"),
-        "resultado" : dados.get("resultado")
+        "resultado" : dados.get("resultado"),
+        "percentual_aceitacao" : dados.get("percentual_aceitacao") # Quão aceitável foi o exame para a saúde do paciente (métrica fictícia)
     })
     if(resposta_exame):
         retorno = f"Exame registrado com sucesso"
@@ -80,7 +80,8 @@ def consultar_exame(dados):
             'id_paciente' : resposta_exame['id_paciente'],
             'tipo_exame' : resposta_exame['tipo_exame'],
             'data' : resposta_exame['data'],
-            'resultado' : resposta_exame['resultado']
+            'resultado' : resposta_exame['resultado'],
+            'percentual_aceitacao' : resposta_exame['percentual_aceitacao']
         }
         auditoria = f"Exame consultado com sucesso"
         return True, retorno, auditoria
