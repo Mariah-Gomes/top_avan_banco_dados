@@ -79,11 +79,13 @@ def registrar_exame():
         tipo_exame = input("Digite o tipo de exame feito: ")
         data = input("Digite a data do exame (YYYY-MM-DD): ")
         resultado = input("Digite o resultado: ")
+        percentual_aceitacao = float(input("Digite o percentual de aceitação do exame: "))
         registrar = {
             "id_paciente" : id.get("id_paciente"),
             "tipo_exame" : tipo_exame,
             "data" : data,
-            "resultado" : resultado
+            "resultado" : resultado,
+            "percentual_aceitacao" : percentual_aceitacao
         }
         resposta_registrar = enviar_mensagem_aguardando("registrar_exame", registrar)
         print(resposta_registrar["mensagem"])
