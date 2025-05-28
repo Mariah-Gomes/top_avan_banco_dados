@@ -215,10 +215,15 @@ def listar_dado_paciente():
     
 def buscar_ids_paciente_medico(dados):
     try:
-        nome_medico = dados.get("nome_medico")
         cpf = dados.get("cpf")
+        crm = dados.get("crm")
 
-        consulta_medico = supabase.table("medico").select("id").eq("nome", nome_medico).execute()
+        if crm:
+            consulta_medico = supabase.table("medico").select("id").eq("crm", crm).execute()
+        else:
+            nome_medico = dados.get("nome_medico")
+            consulta_medico = supabase.table("medico").select("id").eq("nome", nome_medico).execute()
+
         consulta_paciente = supabase.table("paciente").select("id, nome").eq("cpf", cpf).execute()
 
         id_medico = consulta_medico.data[0]['id'] if consulta_medico.data else None
@@ -281,6 +286,37 @@ def buscar_id_medico(dados):
         retorno = {
             'mensagem': f"Erro ao consultar dado no banco de dados: {str(e)}",
             'id_medico': None
+        }
+        auditoria = retorno['mensagem']
+        return False, retorno, auditoria
+    
+# Fiz do Paciente tbm Ass.: Seu Amor s2
+def buscar_id_paciente(dados):
+    try:
+        consulta_resposta = supabase.table("paciente").select("id, nome").eq("cpf", dados["cpf"]).execute()
+        if consulta_resposta.data:
+            linha = consulta_resposta.data[0]    
+            id_paciente = linha['id']
+            nome_paciente = linha['nome']
+            mensagem = f"Nome: {nome_paciente} possui o ID: {id_paciente}"
+            retorno = {
+                'mensagem': mensagem,
+                'id_paciente': id_paciente,
+                'nome_paciente': nome_paciente
+            }
+            auditoria = f"Paciente {nome_paciente} consultado com sucesso"
+            return True, retorno, auditoria
+        else:
+            retorno = {
+                'mensagem': "Paciente não encontrado",
+                'id_paciente': None
+            }
+            auditoria = "Consulta ao CPF não retornou resultados"
+            return False, retorno, auditoria
+    except Exception as e:
+        retorno = {
+            'mensagem': f"Erro ao consultar dado no banco de dados: {str(e)}",
+            'id_paciente': None
         }
         auditoria = retorno['mensagem']
         return False, retorno, auditoria
