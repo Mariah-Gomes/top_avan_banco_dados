@@ -1,6 +1,6 @@
 from datetime import datetime
 from src.s2.connection import supabase
-from src.s2.agenda_generator import gerar_agenda_automaticamente
+from src.s2.cassandra import gerar_agenda_automaticamente
 
 def verificar_dado_medico(crm):
     try:
@@ -291,7 +291,7 @@ def verificar_disponibilidade_medico(dados):
         verificacao = supabase.table("disponibilidade_fixa").select("dia_semana").eq("dia_semana", dados).execute()
         if verificacao.data:
             retorno = {
-                'mensagem': "Esse dia já está cadastrado",
+                'mensagem': "Esse dia não está cadastrado",
                 'chave': '1'
             }
             #print(mensagem)
@@ -299,7 +299,7 @@ def verificar_disponibilidade_medico(dados):
             return True, retorno, auditoria
         else:
             retorno = {
-                'mensagem': "Esse dia não está no sistema",
+                'mensagem': "Esse dia já está no sistema",
                 'chave': '0'
             }
             #print(mensagem)
