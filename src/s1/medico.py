@@ -82,8 +82,7 @@ def validar_dados_disponibilidade():
         resultado = enviar_mensagem_aguardando('verificar_disponibilidade', dia)
         chave = resultado['mensagem']['chave']
         mensagem = resultado['mensagem']['mensagem']
-        print(chave)
-        if chave == '1':
+        if chave == '0':
             print(mensagem)
             print('Se quiser alterar horários desse dia, selecione a opção "Editar Disponibilidade".')
             return chave, dia, hora_inicio, hora_fim

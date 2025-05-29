@@ -3,9 +3,6 @@ from dotenv import load_dotenv
 from cassandra.cluster import Cluster
 from cassandra.auth import PlainTextAuthProvider
 
-# Importa sua função de conexão
-from src.s2.cassandraConnection import create_cassandra_session
-
 def create_table_agenda_medico(session):
     query = """
     CREATE TABLE IF NOT EXISTS agenda_medico (
