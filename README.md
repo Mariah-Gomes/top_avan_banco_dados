@@ -45,6 +45,14 @@ RabbitMQ é uma das melhores opções de mensageria para sistemas distribuídos,
 Iremos utilizar quatro módulos, um simples para direcionamento, onde dado a mensagem ele encaminhará para o módulo específico, e os outros três para tratamento de dados um para cada banco que iremos utilizar.
 
 ## :space_invader: Como executar o código
+Para executar nosso código o usuário precisa seguir as seguintes etapas:
+1. Fazer cadastro nas plataformas que estamos utilizando para acessar o banco de dados, como o Supabase para o SQL, o DataStax Astra para o Cassandra e o ____ para o MongoDB.
+2. Ao fazer cadastro nesses sites você pode colocar a massa de dados que disponibilizamos ou inserir os dados manualmente nesses bancos. Atenção, os dados no Cassandra são colocados ao adicionar ou editar uma disponibilidade de um médico enquanto está rodando o código.
+3. Ao ter os sites dos bancos abertos com o banco de dados, você precisa ter o Docker instalado na sua máquina para conseguir rodar a mensageria que estamos utilizando no caso o RabbitMQ.
+4. Ao instalar o Docker acesse [http://localhost:15672/#/queues](http://localhost:15672/#/queues) para ver o funcionamento das filas.
+5. Com os passos a cima concluídos só rodar em um terminal o consumidor e em outro a main como explicamos no tópico **Iniciando Produtor e Consumidor**
+
+Os passos a cima são apenas uma explicação rápida de como se orientar, também sugerimos uma leitura nos seguintes tópicos para se orientar melhor.
 
 ### Incluindo massa de dados
 
