@@ -113,7 +113,10 @@ Ao iniciar o programa você verá a seguinte tela
 </div>
 <br>
 
-Na parte de dados, você fará as operações com o banco relacional no Supabase, ou seja, são dados de cadastro, remoção, edição, consulta e entre outros de pacientes e médicos. Na parte de consulta, você fará as operações com o Cassandra na parte de agendamento, cancelamento e de buscar uma consulta para o paciente. Na parte de documentação, você fará as operações com o MongoDB, ou seja, cadastrar e consultar laudos e exames de pacientes. E na parte de acompanhamento, mostra um gráfico de um determinado exame para facilitar a visualização do médico se o quadro do paciente piorou ou melhou.
+- Na parte de dados, você fará as operações com o banco relacional no Supabase, ou seja, são dados de cadastro, remoção, edição, consulta e entre outros de pacientes e médicos.
+- Na parte de consulta, você fará as operações com o Cassandra na parte de agendamento, cancelamento e de buscar uma consulta para o paciente.
+- Na parte de documentação, você fará as operações com o MongoDB, ou seja, cadastrar e consultar laudos e exames de pacientes.
+- E na parte de acompanhamento, mostra um gráfico de um determinado exame para facilitar a visualização do médico se o quadro do paciente piorou ou melhou.
 
 ## :busts_in_silhouette: Desenvolvedores
 | [<img loading="lazy" src="https://github.com/Mariah-Gomes/ProjetoCompMovel1/assets/141663285/e6827fd1-d8fe-4740-b6fc-fbbfccd05752" width=115><br><sub>Mariah Santos Gomes</sub>](https://github.com/Mariah-Gomes) | [<img loading="lazy" src="https://github.com/Mariah-Gomes/ProjetoCompMovel1/assets/141663285/66d7e656-b9e4-43b7-94fa-931b736df881" width=115><br><sub>Iago Rosa de Oliveira</sub>](https://github.com/iagorosa28) |
