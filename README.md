@@ -48,6 +48,14 @@ Iremos utilizar quatro módulos, um simples para direcionamento, onde dado a men
 
 ### Incluindo massa de dados
 
+#### Supabase 
+Acesse o site [https://supabase.com](https://supabase.com) e utilize os arquivos `medicos.csv` e `pacientes.csv` disponíveis no repositório para importar os dados nas tabelas correspondentes.  
+Nos prints abaixo, mostramos onde fazer o upload desses arquivos para importar os dados diretamente no Supabase, sem necessidade de alterações.
+
+![Imagem do WhatsApp de 2025-05-29 à(s) 21 24 28_98ea0ab5](https://github.com/user-attachments/assets/e2436e1f-702e-4816-a989-17acba61fa8f)
+
+![Imagem do WhatsApp de 2025-05-29 à(s) 21 25 40_3b504d00](https://github.com/user-attachments/assets/755cbff5-b70b-4038-91e0-12e271a096c1)
+
 #### Mongo Atlas  
 Acesse o site [https://cloud.mongodb.com](https://cloud.mongodb.com) e utilize os arquivos `exames_mongo.json` e `laudos_mongo.json` disponíveis no repositório para importar os dados nas coleções correspondentes.  
 Nos prints abaixo, mostramos onde inserir o conteúdo desses arquivos. Basta copiar (Ctrl + C) e colar (Ctrl + V) diretamente, sem necessidade de alterações.
