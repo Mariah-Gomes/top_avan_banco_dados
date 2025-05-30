@@ -51,7 +51,9 @@ Iremos utilizar quatro módulos, um simples para direcionamento, onde dado a men
 **Mongo Atlas**  
 Acesse o site [https://cloud.mongodb.com](https://cloud.mongodb.com) e utilize os arquivos `exames_mongo.json` e `laudos_mongo.json` disponíveis no repositório para importar os dados nas coleções correspondentes.  
 Nos prints abaixo, mostramos onde inserir o conteúdo desses arquivos. Basta copiar (Ctrl + C) e colar (Ctrl + V) diretamente, sem necessidade de alterações.
+
 ![insertMongo1](https://github.com/user-attachments/assets/6f8b71d8-a14a-4b76-860b-cc7ea9adae58)
+
 ![insertMongo2](https://github.com/user-attachments/assets/21abc42f-eb58-46a3-901c-5e87f41c4eda)
 
 ### Iniciando Produtor e Consumidor
