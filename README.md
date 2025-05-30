@@ -54,9 +54,9 @@ Nos prints abaixo, mostramos onde inserir o conteúdo desses arquivos. Basta cop
 ![insertMongo1](https://github.com/user-attachments/assets/6f8b71d8-a14a-4b76-860b-cc7ea9adae58)
 ![insertMongo2](https://github.com/user-attachments/assets/21abc42f-eb58-46a3-901c-5e87f41c4eda)
 
-## Iniciando Produtor e Consumidor
+### Iniciando Produtor e Consumidor
 
-Abra o terminal do seu computador (CMD, PowerShell, terminal do VS Code, etc.) e siga os passos abaixo:
+Abra o terminal do seu computador (PowerShell, terminal do VS Code, etc.) e siga os passos abaixo:
 1. Inicie o **consumidor** em uma aba, executando o comando:
    ```bash
    python -m src.s2.consumidor
