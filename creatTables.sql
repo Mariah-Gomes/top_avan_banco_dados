@@ -14,10 +14,3 @@ CREATE TABLE paciente (
   data_de_nascimento DATE NOT NULL,
   sexo CHAR(1) NOT NULL
 );
-
-CREATE SEQUENCE pa_me_id_seq;
-CREATE TABLE pa_me (
-  id_paciente INT NOT NULL REFERENCES paciente(id) ON DELETE CASCADE,
-  id_medico INT NOT NULL REFERENCES medico(id) ON DELETE CASCADE,
-  PRIMARY KEY (id_paciente, id_medico) 
-)

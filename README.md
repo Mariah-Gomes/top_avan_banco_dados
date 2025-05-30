@@ -46,6 +46,57 @@ Iremos utilizar quatro módulos, um simples para direcionamento, onde dado a men
 
 ## :space_invader: Como executar o código
 
+### Incluindo massa de dados
+
+#### Supabase 
+Acesse o site [https://supabase.com](https://supabase.com) e utilize os arquivos `medicos.csv` e `pacientes.csv` disponíveis no repositório para importar os dados nas tabelas correspondentes.  
+Nos prints abaixo, mostramos onde fazer o upload desses arquivos para importar os dados diretamente no Supabase, sem necessidade de alterações.
+
+![Imagem do WhatsApp de 2025-05-29 à(s) 21 24 28_98ea0ab5](https://github.com/user-attachments/assets/e2436e1f-702e-4816-a989-17acba61fa8f)
+
+![Imagem do WhatsApp de 2025-05-29 à(s) 21 25 40_3b504d00](https://github.com/user-attachments/assets/755cbff5-b70b-4038-91e0-12e271a096c1)
+
+#### Mongo Atlas  
+Acesse o site [https://cloud.mongodb.com](https://cloud.mongodb.com) e utilize os arquivos `exames_mongo.json` e `laudos_mongo.json` disponíveis no repositório para importar os dados nas coleções correspondentes.  
+Nos prints abaixo, mostramos onde inserir o conteúdo desses arquivos. Basta copiar (Ctrl + C) e colar (Ctrl + V) diretamente, sem necessidade de alterações.
+
+![insertMongo1](https://github.com/user-attachments/assets/6f8b71d8-a14a-4b76-860b-cc7ea9adae58)
+
+![insertMongo2](https://github.com/user-attachments/assets/21abc42f-eb58-46a3-901c-5e87f41c4eda)
+
+### Instalando e Iniciando o Docker
+
+1. Acesse o site oficial do Docker e baixe a versão correspondente ao seu sistema operacional:
+   [https://www.docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop)
+
+2. Após o download, instale o Docker Desktop normalmente, seguindo as instruções do instalador.
+
+3. Finalizada a instalação, **reinicie o computador** se for solicitado.
+
+4. Abra o Docker Desktop e aguarde até que o serviço seja inicializado completamente (ícone na bandeja do sistema deve indicar que está rodando).
+
+5. Para verificar se o Docker está funcionando corretamente, abra um terminal e digite:
+
+   ```bash
+   docker --version
+   ```
+
+   Se tudo estiver certo, o terminal exibirá a versão do Docker instalada.
+
+### Iniciando Produtor e Consumidor
+
+Abra o terminal do seu computador (PowerShell, terminal do VS Code, etc.) e siga os passos abaixo:
+1. Inicie o **consumidor** em uma aba, executando o comando:
+   ```bash
+   python -m src.s2.consumidor
+   ```
+2. Mantenha essa aba aberta e, em uma nova aba do terminal, inicie o **produtor** com o comando:
+   ```bash
+   python -m src.s1.main
+   ```
+O produtor será responsável por exibir os menus do sistema e permitir a execução das operações disponíveis.
+
+
 ## :busts_in_silhouette: Desenvolvedores
 | [<img loading="lazy" src="https://github.com/Mariah-Gomes/ProjetoCompMovel1/assets/141663285/e6827fd1-d8fe-4740-b6fc-fbbfccd05752" width=115><br><sub>Mariah Santos Gomes</sub>](https://github.com/Mariah-Gomes) | [<img loading="lazy" src="https://github.com/Mariah-Gomes/ProjetoCompMovel1/assets/141663285/66d7e656-b9e4-43b7-94fa-931b736df881" width=115><br><sub>Iago Rosa de Oliveira</sub>](https://github.com/iagorosa28) |
 | :---: | :---: |
