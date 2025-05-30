@@ -56,8 +56,6 @@ Nos prints abaixo, mostramos onde inserir o conteúdo desses arquivos. Basta cop
 
 ![insertMongo2](https://github.com/user-attachments/assets/21abc42f-eb58-46a3-901c-5e87f41c4eda)
 
----
-
 ### Instalando e Iniciando o Docker
 
 1. Acesse o site oficial do Docker e baixe a versão correspondente ao seu sistema operacional:
@@ -76,8 +74,6 @@ Nos prints abaixo, mostramos onde inserir o conteúdo desses arquivos. Basta cop
    ```
 
    Se tudo estiver certo, o terminal exibirá a versão do Docker instalada.
-
----
 
 ### Iniciando Produtor e Consumidor
 
