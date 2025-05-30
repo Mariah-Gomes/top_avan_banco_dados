@@ -1,0 +1,926 @@
+[
+  {
+    "id_paciente": 1,
+    "tipo_exame": "Eletrocardiograma",
+    "data": "2024-01-18",
+    "resultado": "Desvio do eixo elétrico",
+    "percentual_aceitacao": 55
+  },
+  {
+    "id_paciente": 2,
+    "tipo_exame": "Tomografia",
+    "data": "2024-01-20",
+    "resultado": "Cisto pequeno identificado",
+    "percentual_aceitacao": 60
+  },
+  {
+    "id_paciente": 2,
+    "tipo_exame": "Hemograma",
+    "data": "2024-02-19",
+    "resultado": "Parâmetros normais",
+    "percentual_aceitacao": 90
+  },
+  {
+    "id_paciente": 2,
+    "tipo_exame": "Eletrocardiograma",
+    "data": "2024-03-20",
+    "resultado": "Desvio do eixo elétrico",
+    "percentual_aceitacao": 55
+  },
+  {
+    "id_paciente": 2,
+    "tipo_exame": "Tomografia",
+    "data": "2024-04-15",
+    "resultado": "Cisto pequeno identificado",
+    "percentual_aceitacao": 60
+  },
+  {
+    "id_paciente": 2,
+    "tipo_exame": "Eletrocardiograma",
+    "data": "2024-05-17",
+    "resultado": "Desvio do eixo elétrico",
+    "percentual_aceitacao": 55
+  },
+  {
+    "id_paciente": 3,
+    "tipo_exame": "Hemograma",
+    "data": "2024-01-20",
+    "resultado": "Hemoglobina normal",
+    "percentual_aceitacao": 95
+  },
+  {
+    "id_paciente": 3,
+    "tipo_exame": "Hemograma",
+    "data": "2024-02-18",
+    "resultado": "Anemia leve detectada",
+    "percentual_aceitacao": 60
+  },
+  {
+    "id_paciente": 3,
+    "tipo_exame": "Tomografia",
+    "data": "2024-03-15",
+    "resultado": "Cisto pequeno identificado",
+    "percentual_aceitacao": 60
+  },
+  {
+    "id_paciente": 4,
+    "tipo_exame": "Eletrocardiograma",
+    "data": "2024-01-20",
+    "resultado": "Fibrilação detectada",
+    "percentual_aceitacao": 40
+  },
+  {
+    "id_paciente": 4,
+    "tipo_exame": "Ultrassonografia",
+    "data": "2024-02-14",
+    "resultado": "Leve alteração hepática",
+    "percentual_aceitacao": 65
+  },
+  {
+    "id_paciente": 4,
+    "tipo_exame": "Hemograma",
+    "data": "2024-03-18",
+    "resultado": "Infecção viral suspeita",
+    "percentual_aceitacao": 30
+  },
+  {
+    "id_paciente": 4,
+    "tipo_exame": "Ultrassonografia",
+    "data": "2024-04-19",
+    "resultado": "Leve alteração hepática",
+    "percentual_aceitacao": 65
+  },
+  {
+    "id_paciente": 4,
+    "tipo_exame": "Hemograma",
+    "data": "2024-05-17",
+    "resultado": "Plaquetas abaixo do ideal",
+    "percentual_aceitacao": 40
+  },
+  {
+    "id_paciente": 5,
+    "tipo_exame": "Ultrassonografia",
+    "data": "2024-01-18",
+    "resultado": "Padrão normal para idade",
+    "percentual_aceitacao": 90
+  },
+  {
+    "id_paciente": 5,
+    "tipo_exame": "Hemograma",
+    "data": "2024-02-18",
+    "resultado": "Anemia leve detectada",
+    "percentual_aceitacao": 60
+  },
+  {
+    "id_paciente": 6,
+    "tipo_exame": "Tomografia",
+    "data": "2024-01-16",
+    "resultado": "Sem alterações visíveis",
+    "percentual_aceitacao": 95
+  },
+  {
+    "id_paciente": 7,
+    "tipo_exame": "Tomografia",
+    "data": "2024-01-17",
+    "resultado": "Cisto pequeno identificado",
+    "percentual_aceitacao": 60
+  },
+  {
+    "id_paciente": 7,
+    "tipo_exame": "Raio-X",
+    "data": "2024-02-15",
+    "resultado": "Sinais de bronquite",
+    "percentual_aceitacao": 50
+  },
+  {
+    "id_paciente": 7,
+    "tipo_exame": "Ultrassonografia",
+    "data": "2024-03-15",
+    "resultado": "Imagem inconclusiva",
+    "percentual_aceitacao": 30
+  },
+  {
+    "id_paciente": 7,
+    "tipo_exame": "Eletrocardiograma",
+    "data": "2024-04-14",
+    "resultado": "Ritmo sinusal normal",
+    "percentual_aceitacao": 100
+  },
+  {
+    "id_paciente": 7,
+    "tipo_exame": "Eletrocardiograma",
+    "data": "2024-05-16",
+    "resultado": "Eletrocardiograma normal",
+    "percentual_aceitacao": 90
+  },
+  {
+    "id_paciente": 8,
+    "tipo_exame": "Raio-X",
+    "data": "2024-01-18",
+    "resultado": "Fratura detectada",
+    "percentual_aceitacao": 20
+  },
+  {
+    "id_paciente": 9,
+    "tipo_exame": "Eletrocardiograma",
+    "data": "2024-01-16",
+    "resultado": "Ritmo sinusal normal",
+    "percentual_aceitacao": 100
+  },
+  {
+    "id_paciente": 9,
+    "tipo_exame": "Ultrassonografia",
+    "data": "2024-02-16",
+    "resultado": "Leve alteração hepática",
+    "percentual_aceitacao": 65
+  },
+  {
+    "id_paciente": 10,
+    "tipo_exame": "Hemograma",
+    "data": "2024-01-16",
+    "resultado": "Parâmetros normais",
+    "percentual_aceitacao": 90
+  },
+  {
+    "id_paciente": 10,
+    "tipo_exame": "Hemograma",
+    "data": "2024-02-19",
+    "resultado": "Anemia leve detectada",
+    "percentual_aceitacao": 60
+  },
+  {
+    "id_paciente": 11,
+    "tipo_exame": "Raio-X",
+    "data": "2024-01-20",
+    "resultado": "Fratura detectada",
+    "percentual_aceitacao": 20
+  },
+  {
+    "id_paciente": 11,
+    "tipo_exame": "Tomografia",
+    "data": "2024-02-19",
+    "resultado": "Imagem dentro do padrão",
+    "percentual_aceitacao": 85
+  },
+  {
+    "id_paciente": 11,
+    "tipo_exame": "Eletrocardiograma",
+    "data": "2024-03-19",
+    "resultado": "Desvio do eixo elétrico",
+    "percentual_aceitacao": 55
+  },
+  {
+    "id_paciente": 12,
+    "tipo_exame": "Eletrocardiograma",
+    "data": "2024-01-16",
+    "resultado": "Arritmia leve",
+    "percentual_aceitacao": 70
+  },
+  {
+    "id_paciente": 12,
+    "tipo_exame": "Eletrocardiograma",
+    "data": "2024-02-19",
+    "resultado": "Desvio do eixo elétrico",
+    "percentual_aceitacao": 55
+  },
+  {
+    "id_paciente": 13,
+    "tipo_exame": "Hemograma",
+    "data": "2024-01-19",
+    "resultado": "Plaquetas abaixo do ideal",
+    "percentual_aceitacao": 40
+  },
+  {
+    "id_paciente": 13,
+    "tipo_exame": "Eletrocardiograma",
+    "data": "2024-02-16",
+    "resultado": "Ritmo sinusal normal",
+    "percentual_aceitacao": 100
+  },
+  {
+    "id_paciente": 14,
+    "tipo_exame": "Tomografia",
+    "data": "2024-01-16",
+    "resultado": "Cisto pequeno identificado",
+    "percentual_aceitacao": 60
+  },
+  {
+    "id_paciente": 14,
+    "tipo_exame": "Tomografia",
+    "data": "2024-02-18",
+    "resultado": "Sem alterações visíveis",
+    "percentual_aceitacao": 95
+  },
+  {
+    "id_paciente": 15,
+    "tipo_exame": "Ultrassonografia",
+    "data": "2024-01-20",
+    "resultado": "Estrutura normal",
+    "percentual_aceitacao": 100
+  },
+  {
+    "id_paciente": 16,
+    "tipo_exame": "Tomografia",
+    "data": "2024-01-19",
+    "resultado": "Lesão detectada",
+    "percentual_aceitacao": 30
+  },
+  {
+    "id_paciente": 17,
+    "tipo_exame": "Eletrocardiograma",
+    "data": "2024-01-18",
+    "resultado": "Arritmia leve",
+    "percentual_aceitacao": 70
+  },
+  {
+    "id_paciente": 17,
+    "tipo_exame": "Hemograma",
+    "data": "2024-02-14",
+    "resultado": "Plaquetas abaixo do ideal",
+    "percentual_aceitacao": 40
+  },
+  {
+    "id_paciente": 18,
+    "tipo_exame": "Raio-X",
+    "data": "2024-01-18",
+    "resultado": "Fratura detectada",
+    "percentual_aceitacao": 20
+  },
+  {
+    "id_paciente": 19,
+    "tipo_exame": "Tomografia",
+    "data": "2024-01-15",
+    "resultado": "Lesão detectada",
+    "percentual_aceitacao": 30
+  },
+  {
+    "id_paciente": 19,
+    "tipo_exame": "Tomografia",
+    "data": "2024-02-14",
+    "resultado": "Lesão detectada",
+    "percentual_aceitacao": 30
+  },
+  {
+    "id_paciente": 19,
+    "tipo_exame": "Ultrassonografia",
+    "data": "2024-03-17",
+    "resultado": "Padrão normal para idade",
+    "percentual_aceitacao": 90
+  },
+  {
+    "id_paciente": 20,
+    "tipo_exame": "Hemograma",
+    "data": "2024-01-20",
+    "resultado": "Infecção viral suspeita",
+    "percentual_aceitacao": 30
+  },
+  {
+    "id_paciente": 20,
+    "tipo_exame": "Hemograma",
+    "data": "2024-02-17",
+    "resultado": "Parâmetros normais",
+    "percentual_aceitacao": 90
+  },
+  {
+    "id_paciente": 21,
+    "tipo_exame": "Tomografia",
+    "data": "2024-01-17",
+    "resultado": "Lesão detectada",
+    "percentual_aceitacao": 30
+  },
+  {
+    "id_paciente": 21,
+    "tipo_exame": "Ultrassonografia",
+    "data": "2024-02-19",
+    "resultado": "Cisto renal detectado",
+    "percentual_aceitacao": 40
+  },
+  {
+    "id_paciente": 22,
+    "tipo_exame": "Raio-X",
+    "data": "2024-01-20",
+    "resultado": "Imagem sem alterações",
+    "percentual_aceitacao": 95
+  },
+  {
+    "id_paciente": 22,
+    "tipo_exame": "Eletrocardiograma",
+    "data": "2024-02-14",
+    "resultado": "Arritmia leve",
+    "percentual_aceitacao": 70
+  },
+  {
+    "id_paciente": 22,
+    "tipo_exame": "Raio-X",
+    "data": "2024-03-17",
+    "resultado": "Fratura detectada",
+    "percentual_aceitacao": 20
+  },
+  {
+    "id_paciente": 22,
+    "tipo_exame": "Raio-X",
+    "data": "2024-04-19",
+    "resultado": "Fratura detectada",
+    "percentual_aceitacao": 20
+  },
+  {
+    "id_paciente": 22,
+    "tipo_exame": "Ultrassonografia",
+    "data": "2024-05-15",
+    "resultado": "Imagem inconclusiva",
+    "percentual_aceitacao": 30
+  },
+  {
+    "id_paciente": 23,
+    "tipo_exame": "Raio-X",
+    "data": "2024-01-20",
+    "resultado": "Pulmões limpos",
+    "percentual_aceitacao": 90
+  },
+  {
+    "id_paciente": 23,
+    "tipo_exame": "Eletrocardiograma",
+    "data": "2024-02-16",
+    "resultado": "Eletrocardiograma normal",
+    "percentual_aceitacao": 90
+  },
+  {
+    "id_paciente": 23,
+    "tipo_exame": "Raio-X",
+    "data": "2024-03-15",
+    "resultado": "Fratura detectada",
+    "percentual_aceitacao": 20
+  },
+  {
+    "id_paciente": 24,
+    "tipo_exame": "Ultrassonografia",
+    "data": "2024-01-18",
+    "resultado": "Estrutura normal",
+    "percentual_aceitacao": 100
+  },
+  {
+    "id_paciente": 24,
+    "tipo_exame": "Eletrocardiograma",
+    "data": "2024-02-16",
+    "resultado": "Desvio do eixo elétrico",
+    "percentual_aceitacao": 55
+  },
+  {
+    "id_paciente": 24,
+    "tipo_exame": "Ultrassonografia",
+    "data": "2024-03-16",
+    "resultado": "Padrão normal para idade",
+    "percentual_aceitacao": 90
+  },
+  {
+    "id_paciente": 24,
+    "tipo_exame": "Tomografia",
+    "data": "2024-04-15",
+    "resultado": "Imagem dentro do padrão",
+    "percentual_aceitacao": 85
+  },
+  {
+    "id_paciente": 24,
+    "tipo_exame": "Eletrocardiograma",
+    "data": "2024-05-14",
+    "resultado": "Eletrocardiograma normal",
+    "percentual_aceitacao": 90
+  },
+  {
+    "id_paciente": 25,
+    "tipo_exame": "Tomografia",
+    "data": "2024-01-18",
+    "resultado": "Lesão detectada",
+    "percentual_aceitacao": 30
+  },
+  {
+    "id_paciente": 25,
+    "tipo_exame": "Hemograma",
+    "data": "2024-02-18",
+    "resultado": "Infecção viral suspeita",
+    "percentual_aceitacao": 30
+  },
+  {
+    "id_paciente": 25,
+    "tipo_exame": "Ultrassonografia",
+    "data": "2024-03-15",
+    "resultado": "Imagem inconclusiva",
+    "percentual_aceitacao": 30
+  },
+  {
+    "id_paciente": 26,
+    "tipo_exame": "Eletrocardiograma",
+    "data": "2024-01-17",
+    "resultado": "Fibrilação detectada",
+    "percentual_aceitacao": 40
+  },
+  {
+    "id_paciente": 26,
+    "tipo_exame": "Tomografia",
+    "data": "2024-02-18",
+    "resultado": "Sem alterações visíveis",
+    "percentual_aceitacao": 95
+  },
+  {
+    "id_paciente": 27,
+    "tipo_exame": "Eletrocardiograma",
+    "data": "2024-01-16",
+    "resultado": "Eletrocardiograma normal",
+    "percentual_aceitacao": 90
+  },
+  {
+    "id_paciente": 27,
+    "tipo_exame": "Ultrassonografia",
+    "data": "2024-02-17",
+    "resultado": "Padrão normal para idade",
+    "percentual_aceitacao": 90
+  },
+  {
+    "id_paciente": 27,
+    "tipo_exame": "Hemograma",
+    "data": "2024-03-17",
+    "resultado": "Anemia leve detectada",
+    "percentual_aceitacao": 60
+  },
+  {
+    "id_paciente": 27,
+    "tipo_exame": "Eletrocardiograma",
+    "data": "2024-04-15",
+    "resultado": "Desvio do eixo elétrico",
+    "percentual_aceitacao": 55
+  },
+  {
+    "id_paciente": 27,
+    "tipo_exame": "Ultrassonografia",
+    "data": "2024-05-19",
+    "resultado": "Padrão normal para idade",
+    "percentual_aceitacao": 90
+  },
+  {
+    "id_paciente": 28,
+    "tipo_exame": "Raio-X",
+    "data": "2024-01-16",
+    "resultado": "Pulmões limpos",
+    "percentual_aceitacao": 90
+  },
+  {
+    "id_paciente": 28,
+    "tipo_exame": "Eletrocardiograma",
+    "data": "2024-02-16",
+    "resultado": "Arritmia leve",
+    "percentual_aceitacao": 70
+  },
+  {
+    "id_paciente": 28,
+    "tipo_exame": "Ultrassonografia",
+    "data": "2024-03-18",
+    "resultado": "Imagem inconclusiva",
+    "percentual_aceitacao": 30
+  },
+  {
+    "id_paciente": 28,
+    "tipo_exame": "Tomografia",
+    "data": "2024-04-15",
+    "resultado": "Sinais de inflamação",
+    "percentual_aceitacao": 50
+  },
+  {
+    "id_paciente": 28,
+    "tipo_exame": "Ultrassonografia",
+    "data": "2024-05-19",
+    "resultado": "Leve alteração hepática",
+    "percentual_aceitacao": 65
+  },
+  {
+    "id_paciente": 29,
+    "tipo_exame": "Eletrocardiograma",
+    "data": "2024-01-18",
+    "resultado": "Arritmia leve",
+    "percentual_aceitacao": 70
+  },
+  {
+    "id_paciente": 29,
+    "tipo_exame": "Raio-X",
+    "data": "2024-02-18",
+    "resultado": "Leve inflamação detectada",
+    "percentual_aceitacao": 60
+  },
+  {
+    "id_paciente": 29,
+    "tipo_exame": "Hemograma",
+    "data": "2024-03-18",
+    "resultado": "Infecção viral suspeita",
+    "percentual_aceitacao": 30
+  },
+  {
+    "id_paciente": 30,
+    "tipo_exame": "Hemograma",
+    "data": "2024-01-15",
+    "resultado": "Hemoglobina normal",
+    "percentual_aceitacao": 95
+  },
+  {
+    "id_paciente": 30,
+    "tipo_exame": "Raio-X",
+    "data": "2024-02-14",
+    "resultado": "Sinais de bronquite",
+    "percentual_aceitacao": 50
+  },
+  {
+    "id_paciente": 30,
+    "tipo_exame": "Ultrassonografia",
+    "data": "2024-03-19",
+    "resultado": "Estrutura normal",
+    "percentual_aceitacao": 100
+  },
+  {
+    "id_paciente": 31,
+    "tipo_exame": "Hemograma",
+    "data": "2024-01-19",
+    "resultado": "Hemoglobina normal",
+    "percentual_aceitacao": 95
+  },
+  {
+    "id_paciente": 32,
+    "tipo_exame": "Tomografia",
+    "data": "2024-01-18",
+    "resultado": "Lesão detectada",
+    "percentual_aceitacao": 30
+  },
+  {
+    "id_paciente": 32,
+    "tipo_exame": "Tomografia",
+    "data": "2024-02-15",
+    "resultado": "Imagem dentro do padrão",
+    "percentual_aceitacao": 85
+  },
+  {
+    "id_paciente": 33,
+    "tipo_exame": "Ultrassonografia",
+    "data": "2024-01-20",
+    "resultado": "Padrão normal para idade",
+    "percentual_aceitacao": 90
+  },
+  {
+    "id_paciente": 33,
+    "tipo_exame": "Raio-X",
+    "data": "2024-02-17",
+    "resultado": "Leve inflamação detectada",
+    "percentual_aceitacao": 60
+  },
+  {
+    "id_paciente": 33,
+    "tipo_exame": "Eletrocardiograma",
+    "data": "2024-03-19",
+    "resultado": "Eletrocardiograma normal",
+    "percentual_aceitacao": 90
+  },
+  {
+    "id_paciente": 34,
+    "tipo_exame": "Eletrocardiograma",
+    "data": "2024-01-16",
+    "resultado": "Eletrocardiograma normal",
+    "percentual_aceitacao": 90
+  },
+  {
+    "id_paciente": 34,
+    "tipo_exame": "Hemograma",
+    "data": "2024-02-18",
+    "resultado": "Plaquetas abaixo do ideal",
+    "percentual_aceitacao": 40
+  },
+  {
+    "id_paciente": 34,
+    "tipo_exame": "Hemograma",
+    "data": "2024-03-15",
+    "resultado": "Anemia leve detectada",
+    "percentual_aceitacao": 60
+  },
+  {
+    "id_paciente": 34,
+    "tipo_exame": "Hemograma",
+    "data": "2024-04-14",
+    "resultado": "Hemoglobina normal",
+    "percentual_aceitacao": 95
+  },
+  {
+    "id_paciente": 34,
+    "tipo_exame": "Tomografia",
+    "data": "2024-05-16",
+    "resultado": "Lesão detectada",
+    "percentual_aceitacao": 30
+  },
+  {
+    "id_paciente": 35,
+    "tipo_exame": "Tomografia",
+    "data": "2024-01-18",
+    "resultado": "Lesão detectada",
+    "percentual_aceitacao": 30
+  },
+  {
+    "id_paciente": 35,
+    "tipo_exame": "Hemograma",
+    "data": "2024-02-17",
+    "resultado": "Hemoglobina normal",
+    "percentual_aceitacao": 95
+  },
+  {
+    "id_paciente": 36,
+    "tipo_exame": "Ultrassonografia",
+    "data": "2024-01-17",
+    "resultado": "Estrutura normal",
+    "percentual_aceitacao": 100
+  },
+  {
+    "id_paciente": 36,
+    "tipo_exame": "Tomografia",
+    "data": "2024-02-16",
+    "resultado": "Imagem dentro do padrão",
+    "percentual_aceitacao": 85
+  },
+  {
+    "id_paciente": 37,
+    "tipo_exame": "Tomografia",
+    "data": "2024-01-15",
+    "resultado": "Lesão detectada",
+    "percentual_aceitacao": 30
+  },
+  {
+    "id_paciente": 38,
+    "tipo_exame": "Ultrassonografia",
+    "data": "2024-01-20",
+    "resultado": "Imagem inconclusiva",
+    "percentual_aceitacao": 30
+  },
+  {
+    "id_paciente": 39,
+    "tipo_exame": "Ultrassonografia",
+    "data": "2024-01-19",
+    "resultado": "Imagem inconclusiva",
+    "percentual_aceitacao": 30
+  },
+  {
+    "id_paciente": 39,
+    "tipo_exame": "Eletrocardiograma",
+    "data": "2024-02-15",
+    "resultado": "Desvio do eixo elétrico",
+    "percentual_aceitacao": 55
+  },
+  {
+    "id_paciente": 39,
+    "tipo_exame": "Hemograma",
+    "data": "2024-03-16",
+    "resultado": "Anemia leve detectada",
+    "percentual_aceitacao": 60
+  },
+  {
+    "id_paciente": 39,
+    "tipo_exame": "Eletrocardiograma",
+    "data": "2024-04-15",
+    "resultado": "Eletrocardiograma normal",
+    "percentual_aceitacao": 90
+  },
+  {
+    "id_paciente": 39,
+    "tipo_exame": "Raio-X",
+    "data": "2024-05-17",
+    "resultado": "Fratura detectada",
+    "percentual_aceitacao": 20
+  },
+  {
+    "id_paciente": 40,
+    "tipo_exame": "Ultrassonografia",
+    "data": "2024-01-19",
+    "resultado": "Leve alteração hepática",
+    "percentual_aceitacao": 65
+  },
+  {
+    "id_paciente": 40,
+    "tipo_exame": "Raio-X",
+    "data": "2024-02-18",
+    "resultado": "Pulmões limpos",
+    "percentual_aceitacao": 90
+  },
+  {
+    "id_paciente": 40,
+    "tipo_exame": "Ultrassonografia",
+    "data": "2024-03-15",
+    "resultado": "Leve alteração hepática",
+    "percentual_aceitacao": 65
+  },
+  {
+    "id_paciente": 41,
+    "tipo_exame": "Eletrocardiograma",
+    "data": "2024-01-19",
+    "resultado": "Eletrocardiograma normal",
+    "percentual_aceitacao": 90
+  },
+  {
+    "id_paciente": 41,
+    "tipo_exame": "Ultrassonografia",
+    "data": "2024-02-16",
+    "resultado": "Estrutura normal",
+    "percentual_aceitacao": 100
+  },
+  {
+    "id_paciente": 41,
+    "tipo_exame": "Tomografia",
+    "data": "2024-03-16",
+    "resultado": "Cisto pequeno identificado",
+    "percentual_aceitacao": 60
+  },
+  {
+    "id_paciente": 42,
+    "tipo_exame": "Eletrocardiograma",
+    "data": "2024-01-18",
+    "resultado": "Ritmo sinusal normal",
+    "percentual_aceitacao": 100
+  },
+  {
+    "id_paciente": 43,
+    "tipo_exame": "Hemograma",
+    "data": "2024-01-19",
+    "resultado": "Plaquetas abaixo do ideal",
+    "percentual_aceitacao": 40
+  },
+  {
+    "id_paciente": 43,
+    "tipo_exame": "Raio-X",
+    "data": "2024-02-19",
+    "resultado": "Sinais de bronquite",
+    "percentual_aceitacao": 50
+  },
+  {
+    "id_paciente": 43,
+    "tipo_exame": "Ultrassonografia",
+    "data": "2024-03-17",
+    "resultado": "Imagem inconclusiva",
+    "percentual_aceitacao": 30
+  },
+  {
+    "id_paciente": 43,
+    "tipo_exame": "Hemograma",
+    "data": "2024-04-14",
+    "resultado": "Hemoglobina normal",
+    "percentual_aceitacao": 95
+  },
+  {
+    "id_paciente": 43,
+    "tipo_exame": "Eletrocardiograma",
+    "data": "2024-05-14",
+    "resultado": "Arritmia leve",
+    "percentual_aceitacao": 70
+  },
+  {
+    "id_paciente": 44,
+    "tipo_exame": "Hemograma",
+    "data": "2024-01-20",
+    "resultado": "Parâmetros normais",
+    "percentual_aceitacao": 90
+  },
+  {
+    "id_paciente": 44,
+    "tipo_exame": "Raio-X",
+    "data": "2024-02-14",
+    "resultado": "Leve inflamação detectada",
+    "percentual_aceitacao": 60
+  },
+  {
+    "id_paciente": 44,
+    "tipo_exame": "Tomografia",
+    "data": "2024-03-15",
+    "resultado": "Cisto pequeno identificado",
+    "percentual_aceitacao": 60
+  },
+  {
+    "id_paciente": 45,
+    "tipo_exame": "Eletrocardiograma",
+    "data": "2024-01-18",
+    "resultado": "Ritmo sinusal normal",
+    "percentual_aceitacao": 100
+  },
+  {
+    "id_paciente": 45,
+    "tipo_exame": "Tomografia",
+    "data": "2024-02-14",
+    "resultado": "Imagem dentro do padrão",
+    "percentual_aceitacao": 85
+  },
+  {
+    "id_paciente": 46,
+    "tipo_exame": "Raio-X",
+    "data": "2024-01-15",
+    "resultado": "Imagem sem alterações",
+    "percentual_aceitacao": 95
+  },
+  {
+    "id_paciente": 47,
+    "tipo_exame": "Ultrassonografia",
+    "data": "2024-01-15",
+    "resultado": "Cisto renal detectado",
+    "percentual_aceitacao": 40
+  },
+  {
+    "id_paciente": 47,
+    "tipo_exame": "Ultrassonografia",
+    "data": "2024-02-17",
+    "resultado": "Imagem inconclusiva",
+    "percentual_aceitacao": 30
+  },
+  {
+    "id_paciente": 47,
+    "tipo_exame": "Hemograma",
+    "data": "2024-03-18",
+    "resultado": "Anemia leve detectada",
+    "percentual_aceitacao": 60
+  },
+  {
+    "id_paciente": 48,
+    "tipo_exame": "Eletrocardiograma",
+    "data": "2024-01-19",
+    "resultado": "Arritmia leve",
+    "percentual_aceitacao": 70
+  },
+  {
+    "id_paciente": 48,
+    "tipo_exame": "Tomografia",
+    "data": "2024-02-18",
+    "resultado": "Lesão detectada",
+    "percentual_aceitacao": 30
+  },
+  {
+    "id_paciente": 49,
+    "tipo_exame": "Tomografia",
+    "data": "2024-01-17",
+    "resultado": "Cisto pequeno identificado",
+    "percentual_aceitacao": 60
+  },
+  {
+    "id_paciente": 49,
+    "tipo_exame": "Ultrassonografia",
+    "data": "2024-02-16",
+    "resultado": "Imagem inconclusiva",
+    "percentual_aceitacao": 30
+  },
+  {
+    "id_paciente": 49,
+    "tipo_exame": "Hemograma",
+    "data": "2024-03-17",
+    "resultado": "Anemia leve detectada",
+    "percentual_aceitacao": 60
+  },
+  {
+    "id_paciente": 50,
+    "tipo_exame": "Eletrocardiograma",
+    "data": "2024-01-15",
+    "resultado": "Arritmia leve",
+    "percentual_aceitacao": 70
+  },
+  {
+    "id_paciente": 50,
+    "tipo_exame": "Eletrocardiograma",
+    "data": "2024-02-18",
+    "resultado": "Desvio do eixo elétrico",
+    "percentual_aceitacao": 55
+  }
+]
