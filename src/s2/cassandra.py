@@ -181,3 +181,44 @@ def agendamento_consulta(dados):
         mensagem_erro = f"Erro ao agendar consulta: {e}"
         auditoria = mensagem_erro
         return False, mensagem_erro, auditoria
+
+def cancelamento_consulta(dados):
+    try:
+        medico_id = dados.get("id_medico")
+        data_hora_str = dados.get("dia_hora")
+        paciente_id = dados.get("id_paciente")
+
+        if not medico_id or not data_hora_str or not paciente_id:
+            mensagem = "Erro: dados incompletos. Verifique id_medico, dia_hora e id_paciente."
+            auditoria = mensagem
+            return False, mensagem, auditoria
+
+        try:
+            data_hora = datetime.strptime(data_hora_str, "%d/%m/%Y %H:%M")
+        except ValueError:
+            mensagem = f"Formato de data inválido: {data_hora_str}. Use 'dd/mm/aaaa hh:mm'."
+            auditoria = mensagem
+            return False, mensagem, auditoria
+
+        consulta_id = buscar_consulta_id(medico_id, data_hora)
+
+        if not consulta_id:
+            mensagem = f"Nenhuma consulta encontrada para médico {medico_id} nesse horário."
+            auditoria = mensagem
+            return False, mensagem, auditoria
+
+        update_query = """
+        UPDATE agenda_medico 
+        SET status = 'livre', paciente_id = %s 
+        WHERE medico_id = %s AND data_hora = %s AND consulta_id = %s;
+        """
+        session.execute(update_query, (0, medico_id, data_hora, consulta_id))
+
+        mensagem = f"Consulta cancelada com sucesso para médico {medico_id} em {data_hora.strftime('%d/%m/%Y %H:%M')}."
+        auditoria = mensagem
+        return True, mensagem, auditoria
+
+    except Exception as e:
+        mensagem_erro = f"Erro ao cancelar consulta: {e}"
+        auditoria = mensagem_erro
+        return False, mensagem_erro, auditoria
