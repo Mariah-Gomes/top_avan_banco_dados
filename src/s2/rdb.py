@@ -1,5 +1,6 @@
 from datetime import datetime
 from src.s2.connection import supabase
+from src.s2.cassandra import gerar_agenda_automaticamente
 
 def verificar_dado_medico(crm):
     try:
@@ -321,14 +322,41 @@ def buscar_id_paciente(dados):
         auditoria = retorno['mensagem']
         return False, retorno, auditoria
 
-def adicionar_disponibilidade_medico(dados):
+def verificar_disponibilidade_medico(dados):
+    try:
+        verificacao = supabase.table("disponibilidade_fixa").select("dia_semana").eq("dia_semana", dados).execute()
+        if verificacao.data:
+            retorno = {
+                'mensagem': "Esse dia já está cadastrado",
+                'chave': '1'
+            }
+            #print(mensagem)
+            auditoria = retorno
+            return True, retorno, auditoria
+        else:
+            retorno = {
+                'mensagem': "Esse dia não está no sistema",
+                'chave': '0'
+            }
+            #print(mensagem)
+            auditoria = retorno
+            return False, retorno, auditoria
+    except Exception as e:
+        retorno = f"Erro ao inserir dado no banco de dados: {str(e)}"
+        #print(mensagem)
+        auditoria = retorno
+        return False, retorno, auditoria
     
+def adicionar_disponibilidade_medico(dados):
     try:
         response = supabase.table("disponibilidade_fixa").insert(dados).execute()
+        #id_medico = dados['id_medico']
+        id_medico = dados.get("id_medico")
         if response.data:
             retorno = f"Disponibilidade cadastrada com sucesso"
             #print(mensagem)
             auditoria = retorno
+            gerar_agenda_automaticamente(id_medico, [dados])
             return True, retorno, auditoria
         else:
             retorno = f"Erro ao inserir: {response.error}"
@@ -341,5 +369,22 @@ def adicionar_disponibilidade_medico(dados):
         auditoria = retorno
         return False, retorno, auditoria
     
-def editar_disponibilidade_medico(dados):
-    print()
+def atualizar_disponibilidade_medico(dados):
+    try:
+        response = supabase.table("disponibilidade_fixa").update({"hora_inicio": dados["hora_inicio"],"hora_fim": dados["hora_fim"]}).eq("id_medico", dados["id_medico"]).eq("dia_semana", dados["dia_semana"]).execute()
+        id_medico = dados.get("id_medico")
+        #id_medico = dados['id_medico']
+        if response.data:
+            retorno = "Disponibilidade atualizada com sucesso"
+            auditoria = retorno
+            gerar_agenda_automaticamente(id_medico, [dados])
+            return True, retorno, auditoria
+        else:
+            retorno = f"Erro ao atualizar: {response.error}"
+            auditoria = retorno
+            return False, retorno, auditoria
+
+    except Exception as e:
+        retorno = f"Erro ao atualizar dados no banco: {str(e)}"
+        auditoria = retorno
+        return False, retorno, auditoria
