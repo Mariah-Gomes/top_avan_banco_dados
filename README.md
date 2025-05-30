@@ -75,8 +75,6 @@ Nos prints abaixo, mostramos onde inserir o conteúdo desses arquivos. Basta cop
 
    Se tudo estiver certo, o terminal exibirá a versão do Docker instalada.
 
-6. Agora você já pode usar os comandos `docker build`, `docker run`, `docker compose`, entre outros, normalmente no terminal.
-
 ### Iniciando Produtor e Consumidor
 
 Abra o terminal do seu computador (PowerShell, terminal do VS Code, etc.) e siga os passos abaixo:
