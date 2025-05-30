@@ -56,6 +56,27 @@ Nos prints abaixo, mostramos onde inserir o conteúdo desses arquivos. Basta cop
 
 ![insertMongo2](https://github.com/user-attachments/assets/21abc42f-eb58-46a3-901c-5e87f41c4eda)
 
+### Instalando e Iniciando o Docker
+
+1. Acesse o site oficial do Docker e baixe a versão correspondente ao seu sistema operacional:
+   [https://www.docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop)
+
+2. Após o download, instale o Docker Desktop normalmente, seguindo as instruções do instalador.
+
+3. Finalizada a instalação, **reinicie o computador** se for solicitado.
+
+4. Abra o Docker Desktop e aguarde até que o serviço seja inicializado completamente (ícone na bandeja do sistema deve indicar que está rodando).
+
+5. Para verificar se o Docker está funcionando corretamente, abra um terminal e digite:
+
+   ```bash
+   docker --version
+   ```
+
+   Se tudo estiver certo, o terminal exibirá a versão do Docker instalada.
+
+6. Agora você já pode usar os comandos `docker build`, `docker run`, `docker compose`, entre outros, normalmente no terminal.
+
 ### Iniciando Produtor e Consumidor
 
 Abra o terminal do seu computador (PowerShell, terminal do VS Code, etc.) e siga os passos abaixo:
