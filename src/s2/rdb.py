@@ -291,7 +291,7 @@ def verificar_disponibilidade_medico(dados):
         verificacao = supabase.table("disponibilidade_fixa").select("dia_semana").eq("dia_semana", dados).execute()
         if verificacao.data:
             retorno = {
-                'mensagem': "Esse dia não está cadastrado",
+                'mensagem': "Esse dia já está cadastrado",
                 'chave': '1'
             }
             #print(mensagem)
@@ -299,7 +299,7 @@ def verificar_disponibilidade_medico(dados):
             return True, retorno, auditoria
         else:
             retorno = {
-                'mensagem': "Esse dia já está no sistema",
+                'mensagem': "Esse dia não está no sistema",
                 'chave': '0'
             }
             #print(mensagem)
@@ -320,7 +320,7 @@ def adicionar_disponibilidade_medico(dados):
             retorno = f"Disponibilidade cadastrada com sucesso"
             #print(mensagem)
             auditoria = retorno
-            gerar_agenda_automaticamente(id_medico)
+            gerar_agenda_automaticamente(id_medico, [dados])
             return True, retorno, auditoria
         else:
             retorno = f"Erro ao inserir: {response.error}"
@@ -341,7 +341,7 @@ def atualizar_disponibilidade_medico(dados):
         if response.data:
             retorno = "Disponibilidade atualizada com sucesso"
             auditoria = retorno
-            gerar_agenda_automaticamente(id_medico)
+            gerar_agenda_automaticamente(id_medico, [dados])
             return True, retorno, auditoria
         else:
             retorno = f"Erro ao atualizar: {response.error}"

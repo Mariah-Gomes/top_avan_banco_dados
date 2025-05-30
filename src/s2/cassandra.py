@@ -2,6 +2,8 @@
 import datetime as dt
 from datetime import date, timedelta
 from uuid import uuid4
+from cassandra.query import SimpleStatement
+from datetime import datetime
 #from cassandra.query import dict_factory
 
 from src.s2.cassandraConnection import create_cassandra_session
@@ -73,8 +75,6 @@ def gerar_agenda_automaticamente(medico_id, disponibilidades=None):
                         WHERE medico_id = %s AND data_hora = %s
                     """, (medico_id, data_hora))
 
-                    #print(f"[DEBUG] Verificando se já existe consulta: {data_hora}")
-
                     if result.one() is None:
                         print(f"[INSERINDO] Médico {medico_id}, Data: {data_hora}")
                         session.execute("""
@@ -89,29 +89,95 @@ def gerar_agenda_automaticamente(medico_id, disponibilidades=None):
 def dias_disponiveis(medico_id):
     try:
         query = """
-        SELECT data_hora, status FROM agenda_medico 
-        WHERE medico_id = %s AND status = 'livre';
+        SELECT data_hora FROM agenda_medico 
+        WHERE medico_id = %s AND status = 'livre' ALLOW FILTERING;
         """
         resultados = session.execute(query, (medico_id,))
-        dias = {row.data_hora.date() for row in resultados}
-        dias_ordenados = sorted(dias)
+        resultados = list(resultados)  # força avaliação para debug
+        lista_temporaria = [row.data_hora.strftime("%d/%m/%Y %H:%M") for row in resultados]
+        horarios = sorted(lista_temporaria)
 
-        if not dias_ordenados:
-            mensagem = f"Médico {medico_id} não possui dias disponíveis para consulta."
+        if not horarios:
+            mensagem = f"Médico {medico_id} não possui horários disponíveis para consulta."
+            sucesso = True
         else:
-            mensagem = f"Consulta de dias disponíveis para médico {medico_id} realizada com sucesso."
+            mensagem = f"Consulta de horários disponíveis para médico {medico_id} realizada com sucesso."
+            sucesso = True
 
         resposta = {
-            "medico_id": medico_id,
-            "dias_disponiveis": dias_ordenados,
+            "horarios_disponiveis": horarios,
             "mensagem": mensagem
         }
-        return True, resposta, mensagem
+
+        auditoria = mensagem
+        return sucesso, resposta, auditoria
 
     except Exception as e:
-        mensagem_erro = f"Erro na consulta de dias disponíveis para médico {medico_id}: {str(e)}"
+        print(f"DEBUG - Erro na consulta de horários disponíveis para médico {medico_id}: {e}")
+        mensagem_erro = f"Erro na consulta de horários disponíveis para médico {medico_id}: {str(e)}"
         resposta = {
             "medico_id": medico_id,
-            "dias_disponiveis": []
+            "horarios_disponiveis": []
         }
         return False, resposta, mensagem_erro
+
+def buscar_consulta_id(medico_id, data_hora):
+    try:
+        query = """
+        SELECT consulta_id FROM agenda_medico 
+        WHERE medico_id = %s AND data_hora = %s ALLOW FILTERING;
+        """
+        statement = SimpleStatement(query)
+        resultado = session.execute(statement, (medico_id, data_hora))
+        row = resultado.one()
+
+        if row:
+            return row.consulta_id
+        else:
+            print(f"Nenhuma consulta encontrada para médico {medico_id} no horário {data_hora}")
+            return None
+    except Exception as e:
+        print(f"Erro ao buscar consulta_id: {e}")
+        return None
+
+
+def agendamento_consulta(dados):
+    try:
+        medico_id = dados.get("id_medico")
+        data_hora_str = dados.get("dia_hora")
+        paciente_id = dados.get("id_paciente")
+
+        if not medico_id or not data_hora_str or not paciente_id:
+            mensagem = "Erro: dados incompletos. Verifique id_medico, dia_hora e id_paciente."
+            auditoria = mensagem
+            return False, mensagem, auditoria
+
+        try:
+            data_hora = datetime.strptime(data_hora_str, "%d/%m/%Y %H:%M")
+        except ValueError:
+            mensagem = f"Formato de data inválido: {data_hora_str}. Use 'dd/mm/aaaa hh:mm'."
+            auditoria = mensagem
+            return False, mensagem, auditoria
+
+        consulta_id = buscar_consulta_id(medico_id, data_hora)
+
+        if not consulta_id:
+            mensagem = f"Nenhuma consulta encontrada para médico {medico_id} nesse horário."
+            auditoria = mensagem
+            return False, mensagem, auditoria
+
+        update_query = """
+        UPDATE agenda_medico 
+        SET status = 'agendado', paciente_id = %s 
+        WHERE medico_id = %s AND data_hora = %s AND consulta_id = %s;
+        """
+        session.execute(update_query, (paciente_id, medico_id, data_hora, consulta_id))
+
+        mensagem = f"Consulta agendada com sucesso para médico {medico_id} em {data_hora.strftime('%d/%m/%Y %H:%M')}."
+        auditoria = mensagem
+        return True, mensagem, auditoria
+
+    except Exception as e:
+        mensagem_erro = f"Erro ao agendar consulta: {e}"
+        auditoria = mensagem_erro
+        return False, mensagem_erro, auditoria
