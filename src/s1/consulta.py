@@ -32,8 +32,8 @@ def consultar_id():
     ids = resposta.get("mensagem")
 
     print(ids.get("mensagem"))
-    print("Médico ID:", ids.get("id_medico"))
-    print("Paciente ID:", ids.get("id_paciente"))
+    #print("Médico ID:", ids.get("id_medico"))
+    #print("Paciente ID:", ids.get("id_paciente"))
 
     return ids  # Retorna o dicionário com os IDs
 
@@ -77,5 +77,25 @@ def buscar():
     print('Em andamento')
     
 def cancelar():
-    print('Muda o status de cancelada')
-    print('Em andamento')
+    ids = consultar_id()
+    if not ids:
+        return  # Se não conseguiu buscar os IDs, encerra aqui
+
+    id_medico = ids.get("id_medico")
+    id_paciente = ids.get("id_paciente")
+
+    if id_medico is None:
+        print("Médico não cadastrado no sistema")
+        return
+    if id_paciente is None:
+        print("Paciente não cadastrado no sistema")
+        return
+    
+    dia_hora = input("Insira o dia e o horário da consulta: ")
+    dados = {
+    'id_medico' : id_medico,
+    'id_paciente' : id_paciente,
+    'dia_hora' : dia_hora    
+    }
+    marcar = enviar_mensagem_aguardando("cancelamento_consulta", dados)
+    print(marcar['mensagem'])
